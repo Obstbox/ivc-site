@@ -10,8 +10,10 @@ require_once $root_path . "/core/functions.php";
 require_once $root_path . "/core/config.php";
 
 $params = [
-    'name' => 'vasya',
-    'sex' => 'male'
+    'title' => 'Портал ИВЦ',
+    'total_pc' => 138,
+    'total_printer' => 49,
+    'total_iso' => 199,
 ];
 
 

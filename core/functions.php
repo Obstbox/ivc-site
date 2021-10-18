@@ -1,8 +1,7 @@
 <?php
 
 function renderView(String $view, Array $params)
-{
-    var_dump($params);
+{    
     if (!empty($params)) {
         foreach($params as $key=>$value) {
             $$key = $value;
