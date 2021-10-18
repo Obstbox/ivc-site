@@ -12,8 +12,7 @@ require_once $root_path . "/core/config.php";
 $params = [
     'title' => 'Портал ИВЦ',
     'total_pc' => 138,
-    'total_printer' => 49,
-    'total_iso' => 199,
+    'total_printer' => 49,    
 ];
 
 

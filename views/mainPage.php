@@ -15,25 +15,27 @@
   <body>
     <div class="container">
 
-      <div class="row" style="margin-top:20px">
-        <div class="eight columns">&nbsp;</div>
+      <div class="row" style="margin-top:10px">
+        <div class="eight columns"><h4>Портал ИВЦ</h4></div>
         <div class="two columns"><a href=#>Вход</a></div>
         <div class="two columns"><a href=#>Регистрация</a></div>
-      </div>
-  
-      <div class="row">  
-        <p>Всего записей:
-        <ul>
-          <li>Персональные компьютеры -</li>
-          <li>Образы -</li>
-          <li>Принтеры/МФУ - </li>
-        </ul>  
-      </div>
+      </div>     
 
       <div class="row">
-        <div class="one-half column" style="margin-top: 10%">
-          <h4>Basic Page</h4>
-          <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
+        <div class="two-thirds column" style="margin-top: 20%">          
+          <ul>
+            <li>Список <a href=#>компьютеров</a></li>
+            <li>Список <a href=#>образов</a></li>
+            <li>Список <a href=#>устройств печати</a></li>
+            <li>Список <a href=#>UPS</a></lis>
+          </ul>
+        </div>
+        <div class="one-third column" style="margin-top: 25%">
+        <p>БД содержит записей:
+        <ul>
+          <li>Компьютеры - <?php echo $total_pc; ?></li>          
+          <li>Принтеры/МФУ - <?php echo $total_printer; ?></li>
+        </ul>  
         </div>
       </div>
       
