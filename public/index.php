@@ -6,12 +6,12 @@ error_reporting(E_ALL);
 
 $root_path = __DIR__ . "/..";
 
+// require_once $root_path . "/core/config.php";
 require_once $root_path . "/core/functions.php";
-require_once $root_path . "/core/config.php";
 
 $params = [
-    'title' => 'Портал ИВЦ',
-    'total_pc' => 138,
+    'main_title' => 'Портал ИВЦ',
+    'total_computer' => 138,
     'total_printer' => 49,    
 ];
 

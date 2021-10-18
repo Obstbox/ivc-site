@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title><?php echo $title; ?></title>
+  <title><?php echo $main_title; ?></title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
@@ -24,7 +24,7 @@
       <div class="row">
         <div class="two-thirds column" style="margin-top: 20%">          
           <ul>
-            <li>Список <a href=#>компьютеров</a></li>
+            <li>Список <a href='computers.php'>компьютеров</a></li>
             <li>Список <a href=#>образов</a></li>
             <li>Список <a href=#>устройств печати</a></li>
             <li>Список <a href=#>UPS</a></lis>
@@ -33,7 +33,7 @@
         <div class="one-third column" style="margin-top: 25%">
         <p>БД содержит записей:
         <ul>
-          <li>Компьютеры - <?php echo $total_pc; ?></li>          
+          <li>Компьютеры - <?php echo $total_computer; ?></li>          
           <li>Принтеры/МФУ - <?php echo $total_printer; ?></li>
         </ul>  
         </div>
