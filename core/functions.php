@@ -25,7 +25,7 @@ function checkDbConnection($db_params)
     }
 }
 
-function getDbData($db_params)
+function getDbData($db_params): array
 {
     extract($db_params);
     try {
@@ -33,9 +33,11 @@ function getDbData($db_params)
         $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $statement = $connect->prepare("SELECT id, name, location, ram_size, cpu_freq FROM computers");
         $statement->execute();
-        $result = $statement->setFetchMode(PDO::FETCH_ASSOC);
-        var_dump($statement->fetchAll());
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll();
+        return $result;       
+
     } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        return ['Error: ' => $e->getMessage()];
     }
 }

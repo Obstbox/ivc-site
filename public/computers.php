@@ -6,9 +6,12 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . "/../core/config.php";
 require_once __DIR__ . "/../core/functions.php";
-header("Content-Type: text/html; charset=utf-8");
 
-getDbData($db_params);
+
+$computer_table_data = getDbData($db_params);
+// foreach($computer_table_data as $row) {
+//   var_dump($row['id'], $row['name']);
+// }
 ?>
 
 
@@ -39,26 +42,24 @@ getDbData($db_params);
         <table class="u-full-width">
           <thead>
             <tr>
+              <th>&nbsp#&nbsp</th>
               <th>Название</th>
               <th>Должность оператора</th>
               <th>Объем ОЗУ</th>
               <th>Тип ОЗУ</th>
             </tr>
           </thead>
+          <?php foreach ($computer_table_data as $row): ?>
           <tbody>
             <tr>
-              <td>apk-gi</td>
-              <td>главный инженер</td>
-              <td>DDR-3</td>
-              <td>4096</td>
+              <td><?php echo current($row); ?></td>
+              <td><?php echo $row['name']; ?></td>
+              <td><?php echo $row['location']; ?></td>
+              <td><?php echo $row['ram_size']; ?></td>
+              <td><?php echo $row['cpu_freq']; ?></td>              
             </tr>
-            <tr>
-              <td>ok-insp</td>
-              <td>инспектор отдела кадров</td>
-              <td>DDR-2</td>
-              <td>2048</td>
-            </tr>
-          </tbody>
+            </tbody>
+          <?php endforeach; ?>            
         </table>
       </div>      
     </div>
