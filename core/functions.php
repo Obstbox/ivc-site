@@ -25,7 +25,7 @@ function checkDbConnection($db_params)
     }
 }
 
-function getDbData($db_params): array
+function getDbData(Array $db_params): array
 {
     extract($db_params);
     try {
@@ -40,4 +40,17 @@ function getDbData($db_params): array
     } catch(PDOException $e) {
         return ['Error: ' => $e->getMessage()];
     }
+}
+
+function deleteRow(Array $db_params, String $id)
+{
+    extract($db_params);
+    try {
+        $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM computers WHERE id ={$id}";
+    } catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
+    $conn = null;
 }

@@ -10,7 +10,7 @@ $root_path = __DIR__ . "/..";
 require_once $root_path . "/core/functions.php";
 
 $params = [
-    'main_title' => 'Портал ИВЦ',
+    // 'main_title' => 'Портал ИВЦ',
     'total_computer' => 138,
     'total_printer' => 49,    
 ];

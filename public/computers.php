@@ -9,9 +9,6 @@ require_once __DIR__ . "/../core/functions.php";
 
 
 $computer_table_data = getDbData($db_params);
-// foreach($computer_table_data as $row) {
-//   var_dump($row['id'], $row['name']);
-// }
 ?>
 
 
@@ -19,7 +16,7 @@ $computer_table_data = getDbData($db_params);
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title><?php echo $main_title; ?></title>
+  <title>Список компьютеров</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>  
@@ -51,6 +48,7 @@ $computer_table_data = getDbData($db_params);
               <th>Частота ЦПУ</th>
               <th>Тип ОЗУ</th>
               <th><i>Действия</i></th>
+              <th>id</th>
             </tr>
           </thead>
           <?php foreach ($computer_table_data as $row): ?>
@@ -62,10 +60,17 @@ $computer_table_data = getDbData($db_params);
               <td><?php echo $row['ram_size']; ?></td>
               <td><?php echo $row['cpu_freq']; ?></td>    
               <td>
-                <a href=#><i class="material-icons">arrow_forward</i></a>
-                <a href=#><i class="material-icons">edit</i></a>
-                <a href=# style="color: black"><i class="material-icons">delete_forever</i></a>
-              </td>       
+                <a href="detailsPage.php?id=<?php echo $row['id'];?>">
+                  <i class="material-icons">arrow_forward</i>
+                </a>
+                <a href="editionPage.php?id=<?php echo $row['id'];?>">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a href="deletionPage.php?name=<?php echo $row['name'];?>" style="color: black">
+                  <i class="material-icons">delete_forever</i>
+                </a>
+              </td>
+              <td><?php echo $row['id']; ?></td>   
             </tr>
             </tbody>
           <?php endforeach; ?>            
