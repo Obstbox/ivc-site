@@ -1,0 +1,5 @@
+vendor/
+tags
+composer.lock
+.trash/
+
