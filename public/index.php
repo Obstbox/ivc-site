@@ -1,20 +1,18 @@
 <?php
-require_once '../core/header.php';
 
-echo "<br><span class='main'>Welcome to $appname,";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-if ($loggedin) 
-{
-    echo " $user, you are logged in.";
-}
+$root_path = __DIR__ . "/..";
 
-else 
-{
-    echo ' please sign up and/or log in to joun in.';
-}
+require_once $root_path . "/core/functions.php";
+require_once $root_path . "/core/config.php";
 
-?>
+$params = [
+    'name' => 'vasya',
+    'sex' => 'male'
+];
 
-        </span><br><br>
-    </body>
-</html>
+
+renderView('mainPage', $params);
