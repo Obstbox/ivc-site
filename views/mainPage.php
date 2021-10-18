@@ -27,7 +27,8 @@
             <li>Список <a href='computers.php'>компьютеров</a></li>
             <li>Список <a href=#>образов</a></li>
             <li>Список <a href=#>устройств печати</a></li>
-            <li>Список <a href=#>UPS</a></lis>
+            <li>Список <a href=#>UPS</a></li>
+            <li>Оперативный <a href=#>журнал</a></li>
           </ul>
         </div>
         <div class="one-third column" style="margin-top: 25%">

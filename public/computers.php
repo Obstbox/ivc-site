@@ -23,7 +23,10 @@ $computer_table_data = getDbData($db_params);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>  
+  <!-- font -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <!-- icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="skeleton.css">
   <link rel="icon" type="image/png" href="gears.png">
@@ -40,13 +43,14 @@ $computer_table_data = getDbData($db_params);
       <div class="row" style="margin-top:20%">
         <h5>Список персональных компьютеров предприятия</h6>
         <table class="u-full-width">
-          <thead>
+          <thead style=>
             <tr>
               <th>&nbsp#&nbsp</th>
               <th>Название</th>
               <th>Должность оператора</th>
-              <th>Объем ОЗУ</th>
+              <th>Частота ЦПУ</th>
               <th>Тип ОЗУ</th>
+              <th><i>Действия</i></th>
             </tr>
           </thead>
           <?php foreach ($computer_table_data as $row): ?>
@@ -56,7 +60,12 @@ $computer_table_data = getDbData($db_params);
               <td><?php echo $row['name']; ?></td>
               <td><?php echo $row['location']; ?></td>
               <td><?php echo $row['ram_size']; ?></td>
-              <td><?php echo $row['cpu_freq']; ?></td>              
+              <td><?php echo $row['cpu_freq']; ?></td>    
+              <td>
+                <a href=#><i class="material-icons">arrow_forward</i></a>
+                <a href=#><i class="material-icons">edit</i></a>
+                <a href=# style="color: black"><i class="material-icons">delete_forever</i></a>
+              </td>       
             </tr>
             </tbody>
           <?php endforeach; ?>            
