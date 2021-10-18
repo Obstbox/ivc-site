@@ -24,3 +24,18 @@ function checkDbConnection($db_params)
         echo "Connection failed: " . $e->getMessage();
     }
 }
+
+function getDbData($db_params)
+{
+    extract($db_params);
+    try {
+        $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $statement = $connect->prepare("SELECT id, name, location, ram_size, cpu_freq FROM computers");
+        $statement->execute();
+        $result = $statement->setFetchMode(PDO::FETCH_ASSOC);
+        var_dump($statement->fetchAll());
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
