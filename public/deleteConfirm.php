@@ -3,7 +3,7 @@
 require_once __DIR__ . "/../core/config.php";
 require_once __DIR__ . "/../core/functions.php";
 
-$computer_data = getSqlRow($db_params, $_GET['id']);
+$row = getSqlRow($db_params, $_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ $computer_data = getSqlRow($db_params, $_GET['id']);
 
       <div class="row" style="margin-top:10px">
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
-        <div class="two columns"><a href="javascript:history.go(-1)">вернуться</a></div>
+        <div class="two columns">&nbsp</div>
         <div class="two columns"><a href=index.php>на главную</a></div>
       </div>
 
@@ -34,10 +34,10 @@ $computer_data = getSqlRow($db_params, $_GET['id']);
         <h5>Действительно удалить запись&emsp;
           <strong>
             <i>
-              <?php echo $computer_data['name'];?>
+              <?php echo $row['name'];?>
             </i>
           </strong>&emsp;
-        со следующими параметрами:</h5>
+        со следующими параметрами?</h5>
       </div>
 
       <div class="row">
@@ -48,14 +48,16 @@ $computer_data = getSqlRow($db_params, $_GET['id']);
               <th>Расположение</th>
               <th>Дата ввода</th>
               <th>Процессор</th>                          
+              <th>Оперативная память</th>                          
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><?php echo $computer_data['name'];?></td>
-              <td><?php echo $computer_data['location'];?></td>
-              <td><?php echo $computer_data['install_date'];?></td>
-              <td><?php echo $computer_data['cpu_freq'];?></td>
+              <td><?php echo $row['name'];?></td>
+              <td><?php echo $row['location'];?></td>
+              <td><?php echo $row['install_date'];?></td>
+              <td><?php echo $row['cpu_name'] . ', ' . $row['cpu_freq'] . ' МГц'; ?></td>
+              <td><?php echo $row['ram_type'] . ', ' . $row['ram_size'] . ' МБ'; ?></td>
             </tr>
           </tbody>
         </table>
@@ -63,11 +65,14 @@ $computer_data = getSqlRow($db_params, $_GET['id']);
 
       <div class="row" style="margin-top: 10%;">
         <div class="one-half column">
-          <a class="button button-primary u-pull-right" id="warging-btn" href="deleted.php?id=<?php echo $computer_data['id'];?>">&emsp;Да&emsp;</a>
+          <a class="button button-primary u-pull-right" id="warging-btn" href="deleted.php?id=<?php echo $row['id'];?>">&emsp;Да&emsp;</a>
         </div>
         <div class="one-half column">
-          <a class="button u-pull-left" href="index.php">Отмена</a>
+          <a class="button u-pull-left" href="javascript:history.go(-1)">Отмена</a>
         </div>
+      </div>
+      <div class="row" style="margin-top:15%">
+        <p style="color: #a30303">* На самом деле удалять ни в коем случае не нужно. Должен быть своего рода архив</p>
       </div>
       
     </div>

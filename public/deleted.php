@@ -36,7 +36,7 @@ deleteSqlRow($db_params, $_GET['id']);
       </div>  
 
       <div class="row" style="margin-top:25%"></div>
-      <p> Запись была удалена </p>      
+      <p>Запись была удалена из базы данных. <a href="computerTable.php">Вернуться к списку</a></p>      
     </div>
   </body>
 </html>

@@ -33,7 +33,7 @@ $computer_table_data = getSqlTable($db_params);
 
       <div class="row" style="margin-top:10px">
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
-        <div class="two columns"><a href="javascript:history.go(-1)">вернуться</a></div>
+        <div class="two columns">&nbsp</div>
         <div class="two columns"><a href=index.php>на главную</a></div>
       </div>  
 
@@ -73,6 +73,9 @@ $computer_table_data = getSqlTable($db_params);
             </tbody>
           <?php endforeach; ?>            
         </table>
+        
+          <a class="button button-primary u-pull-right">Добавить</a>
+        
       </div>      
     </div>
   </body>
