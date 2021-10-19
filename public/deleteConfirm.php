@@ -3,8 +3,7 @@
 require_once __DIR__ . "/../core/config.php";
 require_once __DIR__ . "/../core/functions.php";
 
-
-
+$computer_data = getSqlRow($db_params, $_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -27,12 +26,17 @@ require_once __DIR__ . "/../core/functions.php";
 
       <div class="row" style="margin-top:10px">
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
-        <div class="two columns">&nbsp</div>
+        <div class="two columns"><a href="javascript:history.go(-1)">вернуться</a></div>
         <div class="two columns"><a href=index.php>на главную</a></div>
       </div>
 
       <div class="row" style="margin-top:20%">
-        <h5>Действительно удалить запись&emsp;<strong><i><?php echo $_GET['name'];?></i></strong>&emsp;
+        <h5>Действительно удалить запись&emsp;
+          <strong>
+            <i>
+              <?php echo $computer_data['name'];?>
+            </i>
+          </strong>&emsp;
         со следующими параметрами:</h5>
       </div>
 
@@ -48,10 +52,10 @@ require_once __DIR__ . "/../core/functions.php";
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
+              <td><?php echo $computer_data['name'];?></td>
+              <td><?php echo $computer_data['location'];?></td>
+              <td><?php echo $computer_data['install_date'];?></td>
+              <td><?php echo $computer_data['cpu_freq'];?></td>
             </tr>
           </tbody>
         </table>
@@ -59,10 +63,10 @@ require_once __DIR__ . "/../core/functions.php";
 
       <div class="row" style="margin-top: 10%;">
         <div class="one-half column">
-          <a class="button button-primary u-pull-right" id="warging-btn" href="#">&emsp;Да&emsp;</a>
+          <a class="button button-primary u-pull-right" id="warging-btn" href="deleted.php?id=<?php echo $computer_data['id'];?>">&emsp;Да&emsp;</a>
         </div>
-        <div class="one-half column warning">
-          <a class="button u-pull-left" href="#">Отмена</a>
+        <div class="one-half column">
+          <a class="button u-pull-left" href="index.php">Отмена</a>
         </div>
       </div>
       

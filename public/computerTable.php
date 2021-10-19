@@ -4,11 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once __DIR__ . "/../core/config.php";
-require_once __DIR__ . "/../core/functions.php";
+include_once __DIR__ . "/../core/config.php";
+include_once __DIR__ . "/../core/functions.php";
 
-
-$computer_table_data = getDbData($db_params);
+$computer_table_data = getSqlTable($db_params);
 ?>
 
 
@@ -32,7 +31,7 @@ $computer_table_data = getDbData($db_params);
 
       <div class="row" style="margin-top:10px">
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
-        <div class="two columns">&nbsp</div>
+        <div class="two columns"><a href="javascript:history.go(-1)">вернуться</a></div>
         <div class="two columns"><a href=index.php>на главную</a></div>
       </div>  
 
@@ -60,13 +59,13 @@ $computer_table_data = getDbData($db_params);
               <td><?php echo $row['cpu_freq']; ?></td>    
               <td>                
                 <i class="material-icons">
-                  <a href="detailsPage.php?id=<?php echo $row['id'];?>">arrow_forward</a>
+                  <a href="details.php?id=<?php echo $row['id'];?>">arrow_forward</a>
                 </i>              
                 <i class="material-icons">
-                  <a href="editionPage.php?id=<?php echo $row['id'];?>">edit</a>
+                  <a href="edit.php?id=<?php echo $row['id'];?>">edit</a>
                 </i>              
                 <i class="material-icons">
-                  <a href="deletionPage.php?name=<?php echo $row['name'];?>" style="color: black">delete_forever</a>
+                  <a href="deleteConfirm.php?id=<?php echo $row['id'];?>" style="color: black">delete_forever</a>
                 </i>                
               </td>
               <td><?php echo $row['id']; ?></td>   

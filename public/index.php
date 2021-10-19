@@ -4,16 +4,16 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$root_path = __DIR__ . "/..";
+include_once __DIR__ . "/../core/config.php";
+include_once __DIR__ . "/../core/functions.php";
 
-// require_once $root_path . "/core/config.php";
-require_once $root_path . "/core/functions.php";
+$current = $_GET['current'] ?? 'main';
 
-$params = [
-    // 'main_title' => 'Портал ИВЦ',
-    'total_computer' => 138,
-    'total_printer' => 49,    
-];
-
-
-renderView('mainPage', $params);
+switch ($current) {
+    case 'main':
+        header('Location: http://localhost:8882/main.php');
+        break;
+    case 'computerTable':
+        header('Location: http://localhost:8882/computerTable.php');
+        break;
+}

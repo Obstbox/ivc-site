@@ -1,18 +1,5 @@
 <?php
 
-function renderView(String $view, Array $params)
-{    
-    if (!empty($params)) {
-        foreach($params as $key=>$value) {
-            $$key = $value;
-        }
-    }
-    ob_start();
-    include_once __DIR__ . "/../views/$view.php";
-    $content = ob_get_contents();
-    ob_end_flush();
-}
-
 function checkDbConnection($db_params)
 {   
     extract($db_params);
@@ -25,7 +12,7 @@ function checkDbConnection($db_params)
     }
 }
 
-function getDbData(Array $db_params): array
+function getSqlTable(array $db_params): array
 {
     extract($db_params);
     try {
@@ -42,15 +29,35 @@ function getDbData(Array $db_params): array
     }
 }
 
-function deleteRow(Array $db_params, String $id)
+function getSqlRow(array $db_params, string $id)
 {
     extract($db_params);
     try {
         $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
         $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM computers WHERE id ={$id}";
+        $statement = $connect->prepare(
+            "SELECT * FROM computers WHERE id = {$id};"
+        );
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $result = $statement->fetch();
+        return $result;
     } catch(PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
+        return ['Error: ' => $e->getMessage()];
     }
-    $conn = null;
+}
+
+function deleteSqlRow(array $db_params, String $id): array
+{    
+    extract($db_params);
+    try {
+        $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM computers WHERE id ={$id}";
+        $connect->exec($sql);
+        return ['ok'];
+        } catch(PDOException $e) {
+        return ['error' => $e->getMessage()];
+    }
+    $connect = null;
 }
