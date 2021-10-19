@@ -29,6 +29,7 @@ $row = getSqlRow($db_params, $_GET['id']);
         <div class="two columns">&nbsp</div>
         <div class="two columns"><a href=index.php>на главную</a></div>
       </div>
+      <hr>
 
       <div class="row" style="margin-top:20%">
         <h5>Действительно удалить запись&emsp;

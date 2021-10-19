@@ -19,7 +19,8 @@
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
         <div class="two columns"><a href=#>Вход</a></div>
         <div class="two columns"><a href=#>Регистрация</a></div>
-      </div>     
+      </div>
+      <hr>
 
       <div class="row">
         <div class="two-thirds column" style="margin-top: 20%">          

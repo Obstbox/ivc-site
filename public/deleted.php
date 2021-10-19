@@ -33,7 +33,8 @@ deleteSqlRow($db_params, $_GET['id']);
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
         <div class="two columns">&nbsp</div>
         <div class="two columns"><a href=index.php>на главную</a></div>
-      </div>  
+      </div> 
+      <hr> 
 
       <div class="row" style="margin-top:25%"></div>
       <p>Запись была удалена из базы данных. <a href="computerTable.php">Вернуться к списку</a></p>      

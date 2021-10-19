@@ -35,10 +35,11 @@ $computer_table_data = getSqlTable($db_params);
         <div class="eight columns"><h4>Портал ИВЦ</h4></div>
         <div class="two columns">&nbsp</div>
         <div class="two columns"><a href=index.php>на главную</a></div>
-      </div>  
+      </div>
+      <hr>
 
       <div class="row" style="margin-top:20%">
-        <h5>Список персональных компьютеров предприятия</h6>
+        <h5>Список персональных компьютеров предприятия</h5>
         <table class="u-full-width">
           <thead>
             <tr>
@@ -60,13 +61,13 @@ $computer_table_data = getSqlTable($db_params);
               <td><?php echo $row['ram_type'] . ', ' . $row['ram_size'] . ' МБ'; ?></td>    
               <td>                
                 <i class="material-icons">
-                  <a href="details.php?id=<?php echo $row['id'];?>">arrow_forward</a>
+                  <a title="Подробнее" href="details.php?id=<?php echo $row['id'];?>">arrow_forward</a>
                 </i>              
                 <i class="material-icons">
-                  <a href="edit.php?id=<?php echo $row['id'];?>">edit</a>
+                  <a title="Изменить"href="edit.php?id=<?php echo $row['id'];?>">edit</a>
                 </i>              
                 <i class="material-icons">
-                  <a href="deleteConfirm.php?id=<?php echo $row['id'];?>" style="color: black">delete_forever</a>
+                  <a title="Удалить"href="deleteConfirm.php?id=<?php echo $row['id'];?>" style="color: black">delete_forever</a>
                 </i>                
               </td>                
             </tr>
