@@ -8,6 +8,8 @@ include_once __DIR__ . "/../core/config.php";
 include_once __DIR__ . "/../core/functions.php";
 
 $computer_table_data = getSqlTable($db_params);
+// var_dump($computer_table_data); exit;
+
 ?>
 
 
@@ -40,23 +42,22 @@ $computer_table_data = getSqlTable($db_params);
         <table class="u-full-width">
           <thead>
             <tr>
-              <th>&nbsp#&nbsp</th>
+              <!-- <th>&nbsp#&nbsp</th> -->
               <th>Название</th>
-              <th>Должность оператора</th>
-              <th>Частота ЦПУ</th>
-              <th>Тип ОЗУ</th>
-              <th><i>Действия</i></th>
-              <th>id</th>
+              <th>Расположение</th>
+              <th>Процессор</th>
+              <th>Оперативная память</th>
+              <th><i>Действия</i></th>              
             </tr>
           </thead>
           <?php foreach ($computer_table_data as $row): ?>
           <tbody>
             <tr>
-              <td><?php echo current($row); ?></td>
+              <!-- <td><?php echo current($row); ?></td> -->
               <td><?php echo $row['name']; ?></td>
               <td><?php echo $row['location']; ?></td>
-              <td><?php echo $row['ram_size']; ?></td>
-              <td><?php echo $row['cpu_freq']; ?></td>    
+              <td><?php echo $row['cpu_name'] . ', ' . $row['cpu_freq'] . ' МГц'; ?></td>
+              <td><?php echo $row['ram_type'] . ', ' . $row['ram_size'] . ' МБ'; ?></td>    
               <td>                
                 <i class="material-icons">
                   <a href="details.php?id=<?php echo $row['id'];?>">arrow_forward</a>
@@ -67,8 +68,7 @@ $computer_table_data = getSqlTable($db_params);
                 <i class="material-icons">
                   <a href="deleteConfirm.php?id=<?php echo $row['id'];?>" style="color: black">delete_forever</a>
                 </i>                
-              </td>
-              <td><?php echo $row['id']; ?></td>   
+              </td>                
             </tr>
             </tbody>
           <?php endforeach; ?>            

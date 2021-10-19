@@ -18,7 +18,7 @@ function getSqlTable(array $db_params): array
     try {
         $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
         $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $statement = $connect->prepare("SELECT id, name, location, ram_size, cpu_freq FROM computers");
+        $statement = $connect->prepare("SELECT * FROM computers");
         $statement->execute();
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         $result = $statement->fetchAll();
