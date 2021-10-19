@@ -59,16 +59,16 @@ $computer_table_data = getDbData($db_params);
               <td><?php echo $row['location']; ?></td>
               <td><?php echo $row['ram_size']; ?></td>
               <td><?php echo $row['cpu_freq']; ?></td>    
-              <td>
-                <a href="detailsPage.php?id=<?php echo $row['id'];?>">
-                  <i class="material-icons">arrow_forward</i>
-                </a>
-                <a href="editionPage.php?id=<?php echo $row['id'];?>">
-                  <i class="material-icons">edit</i>
-                </a>
-                <a href="deletionPage.php?name=<?php echo $row['name'];?>" style="color: black">
-                  <i class="material-icons">delete_forever</i>
-                </a>
+              <td>                
+                <i class="material-icons">
+                  <a href="detailsPage.php?id=<?php echo $row['id'];?>">arrow_forward</a>
+                </i>              
+                <i class="material-icons">
+                  <a href="editionPage.php?id=<?php echo $row['id'];?>">edit</a>
+                </i>              
+                <i class="material-icons">
+                  <a href="deletionPage.php?name=<?php echo $row['name'];?>" style="color: black">delete_forever</a>
+                </i>                
               </td>
               <td><?php echo $row['id']; ?></td>   
             </tr>
