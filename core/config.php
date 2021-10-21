@@ -1,5 +1,9 @@
 <?php
 
+define('SITE_ROOT', __DIR__);
+define('CORE_DIR', SITE_ROOT . '/core');
+
+
 $db_params = [
     'server_name' => 'localhost',
     'table_name' => 'ivc',
@@ -7,7 +11,6 @@ $db_params = [
     'db_password' => 'qwezxc',
 ];
 
-/*
 $pages = [
     'main' => [        
         'title' => 'Главная страница',
@@ -27,5 +30,3 @@ $pages = [
     ]
     
 ];
-
-*/

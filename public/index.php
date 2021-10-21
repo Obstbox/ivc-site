@@ -5,9 +5,12 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 include_once __DIR__ . "/../core/config.php";
-include_once __DIR__ . "/../core/functions.php";
 
-$current = $_GET['current'] ?? 'main';
+$current_page = $_GET['page'] ?? key($pages);
+
+// print_r($current_page);
+
+$content = loadPage($current_page, $pages);
 
 switch ($current) {
     case 'main':
