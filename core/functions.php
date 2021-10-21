@@ -67,16 +67,22 @@ function deleteSqlRow(array $db_params, String $id): array
 function render_page($page)
 {
     $controller_name = CORE_DIR . '/' . $page . '_controller.php';
-    $template_name = TEMPLATES_DIR . '/' . $page . '.php';
+    $template_name = TEMPLATES_DIR . '/' . $page . '_tpl.php';
     if (!is_file($controller_name) || !is_file($template_name)) {
         error404();
         exit;
-    } 
-    require_once $controller_name;
-    $content['full'] = file_get_contents($template_name);
-    echo '<pre>';
-    var_dump($content);
-    echo '</pre>';
+    }
+
+    require_once $controller_name;    
+
+    ob_start();
+    include_once $template_name;
+    $raw_content = ob_get_clean();
+
+    $content = str_replace("{{ message }}", 'миста Ренда был сдеся', $raw_content);
+    echo $content;
+
+    
 }
 
 function loadPage(string $name, array &$pages)
