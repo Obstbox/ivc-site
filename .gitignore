@@ -1,5 +1,4 @@
-vendor/
-tags
-composer.lock
 .trash/
-
+vendor/
+.vscode/
+tags
