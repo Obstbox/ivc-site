@@ -1,6 +1,6 @@
 <?php
 $pages = [
-    'main' => [        
+    'index' => [        
         'title' => 'Главная страница',
         'short_cut' => 'mn'
     ],

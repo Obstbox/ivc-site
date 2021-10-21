@@ -1,5 +1,6 @@
 <?php
 
+/*
 function checkDbConnection($db_params)
 {   
     extract($db_params);
@@ -61,17 +62,48 @@ function deleteSqlRow(array $db_params, String $id): array
     }
     $connect = null;
 }
+*/
 
-
+function render_page($page)
+{
+    $controller_name = CORE_DIR . '/' . $page . '_controller.php';
+    $template_name = TEMPLATES_DIR . '/' . $page . '.php';
+    if (!is_file($controller_name) || !is_file($template_name)) {
+        error404();
+        exit;
+    } 
+    require_once $controller_name;
+    $content['full'] = file_get_contents($template_name);
+    echo '<pre>';
+    var_dump($content);
+    echo '</pre>';
+}
 
 function loadPage(string $name, array &$pages)
 // function loadPage(string $name, array $pages)
 {
-    $page_function = 'page_' . $name;
-    if (function_exists($page_function)) {
-        return $page_function($pages[$name]);
+    $page = $pages[$name] ?? false;
+    print_r($name);
+    exit;
+    if (isPageValid($page)) {
+        $page_function = 'page_' . $page;
+        if (function_exists($page_function)) {
+            return $page_function($pages[$name]);
+        } else {
+            error404();
+        }
     } else {
         error404();
+    }    
+    exit;
+}
+
+function isPageValid(array $page): bool
+{
+    if (!is_array($page) || empty($page)) {
+       return false;
+    } else {
+        return true;
     }
 }
 
@@ -82,3 +114,11 @@ function error404()
     exit;
 }
 
+function render($file, $vars = [])
+{
+    $file = TEMPLATES_DIR . '/' . $file . 'htlm';
+    if (!is_file($file) || filesize($file) === 0) {
+        echo "HTML-шаблон {$file} не существует либо пуст.";
+        exit;
+    }
+}
