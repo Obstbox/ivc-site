@@ -66,20 +66,36 @@ function deleteSqlRow(array $db_params, String $id): array
 
 function render_page($page)
 {
+    /*
     $controller_name = CORE_DIR . '/' . $page . '_controller.php';
     $template_name = TEMPLATES_DIR . '/' . $page . '_tpl.php';
     if (!is_file($controller_name) || !is_file($template_name)) {
         error404();
         exit;
     }
-
     require_once $controller_name;    
+    */
 
-    ob_start();
-    include_once $template_name;
-    $raw_content = ob_get_clean();
+    
+    $vars = [
+        'title' => 'main page title',
+        'header' => '<h4>Main Page</h4>',
+        'menu' => '<a href=#>link1</a>&ensp;<a href=#>link2</a>&ensp;<a href=#>link3</a>&ensp;<a href=#>link4</a><br>',
+        'content' => '<p>core lipsum impa fullstack forth cooler</p>',
+        'footer' => 'copyright 2021',
+    ];
 
-    $content = str_replace("{{ message }}", 'миста Ренда был сдеся', $raw_content);
+
+//    ob_start();
+  //  include_once TEMPLATES_DIR . 'base_tpl.php';
+    //$content = ob_get_clean();
+
+    $content = file_get_contents(TEMPLATES_DIR . 'base_tpl.php');
+    
+    foreach($vars as $k => $v) {
+        $content = str_replace("{{ $k }}", $v, $content);
+    }
+    
     echo $content;
 
     

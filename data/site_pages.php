@@ -1,18 +1,18 @@
 <?php
 $pages = [
-    'index' => [        
+    'main' => [        
         'title' => 'Главная страница',
         'short_cut' => 'mn'
     ],
-    'computerTable' => [
+    'computers' => [
         'title' => 'Список компьютеров',
         'short_cut' => 'pc'
     ],
-    'deleteConfirm' => [
+    'printers' => [
         'title' => 'Удалить запись',
         'short_cut' => 'dc'
     ],
-    'delete' => [
+    'journal' => [
         'title' => 'Страница удалена',
         'short_cut' => 'de'
     ]
