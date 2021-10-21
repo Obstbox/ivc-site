@@ -61,3 +61,24 @@ function deleteSqlRow(array $db_params, String $id): array
     }
     $connect = null;
 }
+
+
+
+function loadPage(string $name, array &$pages)
+// function loadPage(string $name, array $pages)
+{
+    $page_function = 'page_' . $name;
+    if (function_exists($page_function)) {
+        return $page_function($pages[$name]);
+    } else {
+        error404();
+    }
+}
+
+function error404()
+{
+    header('HTTP/1.0 404 Not Found');
+    echo 'Страница не найдена';
+    exit;
+}
+

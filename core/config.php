@@ -2,31 +2,8 @@
 
 define('SITE_ROOT', __DIR__);
 define('CORE_DIR', SITE_ROOT . '/core');
+define('DATA_DIR', SITE_ROOT . '/data');
 
-
-$db_params = [
-    'server_name' => 'localhost',
-    'table_name' => 'ivc',
-    'db_user_name' => 'ivan',
-    'db_password' => 'qwezxc',
-];
-
-$pages = [
-    'main' => [        
-        'title' => 'Главная страница',
-        'short_cut' => 'mn'
-    ],
-    'computerTable' => [
-        'title' => 'Список компьютеров',
-        'short_cut' => 'pc'
-    ],
-    'deleteConfirm' => [
-        'title' => 'Удалить запись',
-        'short_cut' => 'dc'
-    ],
-    'delete' => [
-        'title' => 'Страница удалена',
-        'short_cut' => 'de'
-    ]
-    
-];
+include_once CORE_DIR . '/functions.php';
+include_once DATA_DIR . '/DBParams.php';
+include_once DATA_DIR . '/sitePages.php';
