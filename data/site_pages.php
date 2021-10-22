@@ -1,8 +1,10 @@
 <?php
-$pages = [
+$GLOBALS['pages'] = [
     'main' => [        
         'title' => 'Главная страница',
-        'short_cut' => 'mn'
+        'header' => true,
+        'menu' => true,
+        'content' => 'dummy'
     ],
     'computers' => [
         'title' => 'Список компьютеров',
@@ -15,6 +17,8 @@ $pages = [
     'journal' => [
         'title' => 'Страница удалена',
         'short_cut' => 'de'
+    ],
+    'playboy' => [
+        'title' => 'siski-piski'
     ]
-    
 ];

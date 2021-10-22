@@ -64,40 +64,31 @@ function deleteSqlRow(array $db_params, String $id): array
 }
 */
 
-function render_page($page)
+function render_page(string $index)
 {
-    /*
-    $controller_name = CORE_DIR . '/' . $page . '_controller.php';
-    $template_name = TEMPLATES_DIR . '/' . $page . '_tpl.php';
-    if (!is_file($controller_name) || !is_file($template_name)) {
-        error404();
-        exit;
-    }
-    require_once $controller_name;    
-    */
-
+    $keywords = ['title', 'menu', 'header', 'content'];
+    $vars = [];
     
-    $vars = [
-        'title' => 'main page title',
-        'header' => '<h4>Main Page</h4>',
-        'menu' => '<a href=#>link1</a>&ensp;<a href=#>link2</a>&ensp;<a href=#>link3</a>&ensp;<a href=#>link4</a><br>',
-        'content' => '<p>core lipsum impa fullstack forth cooler</p>',
-        'footer' => 'copyright 2021',
-    ];
+    $vars['title'] = get_title($index);
+    $vars['header'] = get_header($index);
 
-
-//    ob_start();
-  //  include_once TEMPLATES_DIR . 'base_tpl.php';
-    //$content = ob_get_clean();
-
-    $content = file_get_contents(TEMPLATES_DIR . 'base_tpl.php');
+    echo '<pre>';
+    var_dump($vars);
+    echo '</pre>';
+    exit;
+    /*
+    // get_file_contents() только прочитает содержимое
+    // в то время как ob_start() выполнит php-код внутри html
+    ob_start();
+    include_once TEMPLATES_DIR . 'base_tpl.php';
+    $content = ob_get_clean();    
     
     foreach($vars as $k => $v) {
         $content = str_replace("{{ $k }}", $v, $content);
     }
     
     echo $content;
-
+    */
     
 }
 
@@ -142,5 +133,29 @@ function render($file, $vars = [])
     if (!is_file($file) || filesize($file) === 0) {
         echo "HTML-шаблон {$file} не существует либо пуст.";
         exit;
+    }
+}
+
+function prepare_data($page)
+{
+    echo '<pre>';
+    // var_dump($GLOBALS);
+    var_dump($GLOBALS['pages'][$page]);
+    echo '</pre>';
+}
+
+function get_title(string $page)
+{
+    return $GLOBALS['pages'][$page]['title'];
+}
+
+function get_header($page)
+{
+    if ($GLOBALS['pages'][$page]['header']) {
+        ob_start();
+        include_once TEMPLATES_DIR . 'header_tpl.php';
+        return ob_get_clean();
+    } else {
+        return '';
     }
 }

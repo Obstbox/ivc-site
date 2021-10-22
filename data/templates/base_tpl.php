@@ -15,8 +15,8 @@
     <div class="container">
       {{ header }}
       {{ menu }}
-      {{ content }}
-      {{ footer }}      
+      {{ content }}      
     </div>
+    <footer style="width:90%;position:absolute;bottom:5px;background-color:teal;color:white">2021</footer>
   </body>
 </html>

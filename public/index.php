@@ -6,9 +6,10 @@ error_reporting(E_ALL);
 
 include_once __DIR__ . "/../core/config.php";
 
-$page = $_GET['page'] ?? key($pages);
+// данные страниц загружены в $GLOBALS['pages']
+$index = $_GET['page'] ?? key($GLOBALS['pages']);
 
-render_page($page);
+render_page($index);
 
 /*
 switch ($current) {
