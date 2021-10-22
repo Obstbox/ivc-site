@@ -15,7 +15,12 @@
     <div class="container">
       {{ header }}      
       {{ content }}      
+      <!-- <footer style="width:100%;position:absolute;bottom:5px;background-color:teal;color:white">2021</footer> -->
     </div>
-    <footer style="width:90%;position:absolute;bottom:5px;background-color:teal;color:white">2021</footer>
+    <div class="container">
+      <footer id="footer" class="twelve columns" style="text-align:center;margin-top:20%;">
+        2021 Права пофигу
+      </footer>
+    </div>
   </body>
 </html>
