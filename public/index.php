@@ -9,7 +9,7 @@ include_once __DIR__ . "/../core/config.php";
 // данные страниц загружены в $GLOBALS['pages']
 $index = $_GET['page'] ?? key($GLOBALS['pages']);
 
-render_page($index);
+echo render_page($index);
 
 /*
 switch ($current) {

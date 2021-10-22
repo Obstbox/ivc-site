@@ -2,9 +2,7 @@
 $GLOBALS['pages'] = [
     'main' => [        
         'title' => 'Главная страница',
-        'header' => true,
-        'menu' => true,
-        'content' => 'dummy'
+        'header' => true,        
     ],
     'computers' => [
         'title' => 'Список компьютеров',

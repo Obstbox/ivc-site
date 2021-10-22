@@ -66,30 +66,29 @@ function deleteSqlRow(array $db_params, String $id): array
 
 function render_page(string $index)
 {
-    $keywords = ['title', 'menu', 'header', 'content'];
     $vars = [];
     
     $vars['title'] = get_title($index);
-    $vars['header'] = get_header($index);
+    $vars['header'] = get_header($index);    
+    $vars['content'] = get_content($index);
 
-    echo '<pre>';
-    var_dump($vars);
-    echo '</pre>';
-    exit;
-    /*
-    // get_file_contents() только прочитает содержимое
-    // в то время как ob_start() выполнит php-код внутри html
-    ob_start();
-    include_once TEMPLATES_DIR . 'base_tpl.php';
-    $content = ob_get_clean();    
+    // echo '<pre>';
+    // var_dump($vars);
+    // echo '</pre>';
+    // exit;
     
-    foreach($vars as $k => $v) {
-        $content = str_replace("{{ $k }}", $v, $content);
-    }
-    
-    echo $content;
-    */
-    
+    $page_file = TEMPLATES_DIR . 'base.php';
+    if (file_exists($page_file)) {
+        ob_start();
+        include_once $page_file;
+        $content = ob_get_clean(); 
+        foreach($vars as $k => $v) {
+            $content = str_replace("{{ $k }}", $v, $content);
+        }
+    } else {        
+        error404();
+    }    
+    return $content;    
 }
 
 function loadPage(string $name, array &$pages)
@@ -136,14 +135,6 @@ function render($file, $vars = [])
     }
 }
 
-function prepare_data($page)
-{
-    echo '<pre>';
-    // var_dump($GLOBALS);
-    var_dump($GLOBALS['pages'][$page]);
-    echo '</pre>';
-}
-
 function get_title(string $page)
 {
     return $GLOBALS['pages'][$page]['title'];
@@ -153,9 +144,22 @@ function get_header($page)
 {
     if ($GLOBALS['pages'][$page]['header']) {
         ob_start();
-        include_once TEMPLATES_DIR . 'header_tpl.php';
+        include_once TEMPLATES_DIR . 'header.php';
         return ob_get_clean();
     } else {
         return '';
     }
+}
+
+function get_content($page)
+{
+    $content_file = TEMPLATES_DIR . "{$page}/content.php";
+    if (file_exists($content_file)) {
+        ob_start();
+        include_once $content_file;
+        return ob_get_clean();
+    } else {
+        error404();
+        return [];
+    }    
 }
