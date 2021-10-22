@@ -1,5 +1,6 @@
 <?php
 
+/*
 function checkDbConnection($db_params)
 {   
     extract($db_params);
@@ -11,6 +12,7 @@ function checkDbConnection($db_params)
         echo "Connection failed: " . $e->getMessage();
     }
 }
+*/
 
 function getSqlTable(array $db_params): array
 { 
@@ -72,6 +74,7 @@ function render_page(string $index)
         
         $vars['title'] = get_title($index);
         $vars['header'] = get_header($index);    
+        $vars['menu'] = get_menu($index);
         $vars['content'] = get_content($index);
 
         ob_start();
@@ -141,6 +144,17 @@ function get_header($page)
     if (!empty($GLOBALS['pages'][$page]['header'])) {
         ob_start();
         include_once TEMPLATES_DIR . 'header.php';
+        return ob_get_clean();
+    } else {
+        return '';
+    }
+}
+
+function get_menu($page)
+{
+    if (!empty($GLOBALS['pages'][$page]['menu'])) {
+        ob_start();
+        include_once TEMPLATES_DIR . 'menu.php';
         return ob_get_clean();
     } else {
         return '';

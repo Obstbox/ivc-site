@@ -2,11 +2,13 @@
 $GLOBALS['pages'] = [
     'main' => [        
         'title' => 'Главная страница',
-        'header' => true,        
+        'header' => true,
+        'menu' => false,    
     ],
     'computers' => [
         'title' => 'Список компьютеров',
-        'short_cut' => 'pc'
+        'header' => true,        
+        'menu' => true,
     ],
     'printers' => [
         'title' => 'Удалить запись',
