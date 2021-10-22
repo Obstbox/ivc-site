@@ -425,25 +425,3 @@ td,
 th {
   padding: 0;
 }
-
-
-/* my enchantements */
-a { 
-  text-decoration: none;
-}
-
-#warging-btn {
-  background-color: #D44;
-  border-color: #A22;
-}
-
-a.menu-item {
-  padding: 5px;
-}
-
-a.menu-item:hover {
-  color: whitesmoke;
-  border-radius: 5px;
-  background: #1EAEDB;
-  padding: 5px;
-}

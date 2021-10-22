@@ -7,8 +7,12 @@
   <title>{{ title }}</title>
   <!-- FONT -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="skeleton.css">
+  <!-- must be last because of redefinitions -->
+  <link rel="stylesheet" href="custom.css">
+  
   <link rel="icon" type="image/png" href="gears.png">
 </head>
   <body>
@@ -20,7 +24,7 @@
     </div>
     <div class="container">
       <footer id="footer" class="twelve columns" style="text-align:center;margin-top:20%;">
-        2021 Права пофигу
+        2021г. &copy; Права пофигу
       </footer>
     </div>
   </body>
