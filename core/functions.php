@@ -1,6 +1,5 @@
 <?php
 
-/*
 function checkDbConnection($db_params)
 {   
     extract($db_params);
@@ -14,7 +13,7 @@ function checkDbConnection($db_params)
 }
 
 function getSqlTable(array $db_params): array
-{
+{ 
     extract($db_params);
     try {
         $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
@@ -62,23 +61,19 @@ function deleteSqlRow(array $db_params, String $id): array
     }
     $connect = null;
 }
-*/
+
 
 function render_page(string $index)
 {
-    $vars = [];
-    
-    $vars['title'] = get_title($index);
-    $vars['header'] = get_header($index);    
-    $vars['content'] = get_content($index);
-
-    // echo '<pre>';
-    // var_dump($vars);
-    // echo '</pre>';
-    // exit;
-    
     $page_file = TEMPLATES_DIR . 'base.php';
+   
     if (file_exists($page_file)) {
+        $vars = [];
+        
+        $vars['title'] = get_title($index);
+        $vars['header'] = get_header($index);    
+        $vars['content'] = get_content($index);
+
         ob_start();
         include_once $page_file;
         $content = ob_get_clean(); 
@@ -126,7 +121,7 @@ function error404()
     exit;
 }
 
-function render($file, $vars = [])
+function render($file)
 {
     $file = TEMPLATES_DIR . '/' . $file . 'htlm';
     if (!is_file($file) || filesize($file) === 0) {
@@ -137,12 +132,13 @@ function render($file, $vars = [])
 
 function get_title(string $page)
 {
-    return $GLOBALS['pages'][$page]['title'];
+    return $GLOBALS['pages'][$page]['title'] ?? 'Внутренний сайт ИВЦ';
 }
 
 function get_header($page)
 {
-    if ($GLOBALS['pages'][$page]['header']) {
+    // if set and not empty
+    if (!empty($GLOBALS['pages'][$page]['header'])) {
         ob_start();
         include_once TEMPLATES_DIR . 'header.php';
         return ob_get_clean();
@@ -152,7 +148,7 @@ function get_header($page)
 }
 
 function get_content($page)
-{
+{   
     $content_file = TEMPLATES_DIR . "{$page}/content.php";
     if (file_exists($content_file)) {
         ob_start();
