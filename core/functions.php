@@ -14,7 +14,7 @@ function checkDbConnection($db_params)
 }
 */
 
-function getSqlTable(array $db_params): array
+function get_sql_table(array $db_params): array
 { 
     extract($db_params);
     try {
@@ -31,7 +31,7 @@ function getSqlTable(array $db_params): array
     }
 }
 
-function getSqlRow(array $db_params, string $id)
+function get_sql_row(array $db_params, string $id)
 {
     extract($db_params);
     try {
@@ -65,17 +65,17 @@ function deleteSqlRow(array $db_params, String $id): array
 }
 
 
-function render_page(string $index)
+function render_page(string $index, ?int $id)
 {
     $page_file = TEMPLATES_DIR . 'base.php';
    
     if (file_exists($page_file)) {
         $vars = [];
-        
+
         $vars['title'] = get_title($index);
         $vars['header'] = get_header($index);    
         $vars['menu'] = get_menu($index);
-        $vars['content'] = get_content($index);
+        $vars['content'] = get_content($index, $id);
 
         ob_start();
         include_once $page_file;
@@ -93,8 +93,7 @@ function loadPage(string $name, array &$pages)
 // function loadPage(string $name, array $pages)
 {
     $page = $pages[$name] ?? false;
-    print_r($name);
-    exit;
+    
     if (isPageValid($page)) {
         $page_function = 'page_' . $page;
         if (function_exists($page_function)) {
@@ -161,14 +160,15 @@ function get_menu($page)
     }
 }
 
-function get_content($page)
+function get_content(string $page, ?int $id)
 {   
-    $content_file = TEMPLATES_DIR . "{$page}/content.php";
+    $content_file = TEMPLATES_DIR . "content_{$page}.php";
     if (file_exists($content_file)) {
         ob_start();
         include_once $content_file;
         return ob_get_clean();
     } else {
+        echo 'get_content() failed<br>';
         error404();
         return [];
     }    

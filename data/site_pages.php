@@ -10,9 +10,10 @@ $GLOBALS['pages'] = [
         'header' => true,        
         'menu' => true,
     ],
-    'printers' => [
-        'title' => 'Удалить запись',
-        'short_cut' => 'dc'
+    'comp-details' => [
+        'title' => 'Подробности',
+        'header' => true,        
+        'menu' => true,
     ],
     'journal' => [
         'title' => 'Страница удалена',

@@ -1,7 +1,7 @@
 <?php
 /* TEMPLATE_DIR/computers/content.php */
 include_once DB_PARAMS_FILE;
-$computers_data = getSqlTable($db_params);
+$computers_data = get_sql_table($db_params);
 ?>
 
 <div class="row" style="margin-top:20%">
@@ -26,7 +26,7 @@ $computers_data = getSqlTable($db_params);
         <td><?php echo $row['ram_type'] . ', ' . $row['ram_size'] . ' МБ'; ?></td>    
         <td>
             <a 
-              href='index.php?page=details&id=<?php echo $row['id'];?>'
+              href='index.php?page=comp-details&id=<?php echo $row['id'];?>'
               title='Подробнее' 
               class='table-action'>
               &#10132;
