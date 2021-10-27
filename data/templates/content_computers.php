@@ -32,7 +32,7 @@ $computers_data = get_sql_table($db_params);
               &#10132;
             </a>
             <a 
-              href='index.php?page=edit&id=<?php echo $row['id'];?>'
+              href='index.php?page=comp-edit&id=<?php echo $row['id'];?>'
               title='Изменить' 
               class='table-action'>
               &#9998;

@@ -16,9 +16,10 @@ a:hover {
 }
 
 td {
-  padding: 0px 15px;
+  /* padding: 0px 15px; */
   text-align: left;
-  border-bottom: 1px solid #E1E1E1; 
+  border-top: 1px solid #E1E1E1;
+  border-bottom: 1px solid #E1E1E1;
 }
 
 .table-action {
@@ -35,4 +36,15 @@ td {
   border-radius: 5px;
   background: #a22;
   padding: 5px;
+}
+
+table.details tr td:first-child {
+  width: 25%;
+  background: #F5F5F5;
+  padding-left: 15px;
+}
+
+table.details tr td:last-child {
+  width: 75%;
+  min-width: 450px;
 }

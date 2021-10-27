@@ -3,29 +3,40 @@ include_once DB_PARAMS_FILE;
 $computer_row = get_sql_row($db_params, $id);
 
 $rules = [
-    'id' => 'id',
-    'serial_num' => 'Серийный №',
-    'inventory_num' => 'Инвентарный №',
-    'name' => 'Сетевое имя',
-    'location' => 'Расположение',
-    'mother_board' => 'Материнская плата',
-    'ram_type' => 'тип ОЗУ',
-    'ram_size' => 'размер ОЗУ, Мб',
-    'cpu_name' => 'Модель процессора',
-    'cpu_freq' => 'Частота процессора, ГГц',
-    'storage_name' => 'Жесткий диск(SSD)',
-    'storage_size' => 'Размер ЖД(SSD), Гб',
-    'video_card' => 'видео карта',
-    'display' => 'Монитор',
-    'cd_drive' => 'cd/dvd',
-    'install_date' => 'дата установки',    
+  'id' => 'id',
+  'serial_num' => 'Серийный №',
+  'inventory_num' => 'Инвентарный №',
+  'name' => 'Сетевое имя',
+  'location' => 'Расположение',
+  'mother_board' => 'Материнская плата',
+  'ram_type' => 'тип ОЗУ',
+  'ram_size' => 'размер ОЗУ, Мб',
+  'cpu_name' => 'Модель процессора',
+  'cpu_freq' => 'Частота процессора, МГц',
+  'storage_name' => 'Жесткий диск (SSD)',
+  'storage_size' => 'Размер ЖД (SSD), Гб',
+  'video_card' => 'Видео карта',
+  'display' => 'Монитор',
+  'cd_drive' => 'cd/dvd',
+  'install_date' => 'Дата установки',
 ];
 
 ?>
 
-<div class="row" style="margin-top:20%">
+<div class="row" style="margin-top:50px;">
   <p>подробные параметы компьютера <strong><?php echo $computer_row['name'];?></strong> </p>
-  <table class="u-full-width">
+  <table class="details u-full-width">
+    <?php foreach ($rules as $col_sqlname => $col_label): ?>
+    <tr>
+      <td><?php echo $col_label; ?></td>
+      <td><?php echo $computer_row[$col_sqlname]; ?></td>
+    </tr>
+    <?php endforeach; ?>    
+  </table>
+
+
+  <?php /*
+  <table class="u-cf">
     <thead>
       <tr>
         <?php foreach ($rules as $values): ?>
@@ -41,6 +52,7 @@ $rules = [
       </tr>
     </tbody>
   </table>
+  */ ?>
   
   <a class="button button-primary u-pull-right">Добавить</a>
   
