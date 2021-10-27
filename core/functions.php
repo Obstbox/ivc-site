@@ -41,7 +41,7 @@ function get_sql_row(array $db_params, string $id)
             "SELECT * FROM computers WHERE id = {$id};"
         );
         $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_ASSOC);
+        $statement->setFetchMode(PDO::FETCH_BOTH);
         $result = $statement->fetch();
         return $result;
     } catch(PDOException $e) {
