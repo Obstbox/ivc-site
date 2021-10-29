@@ -20,6 +20,11 @@ $GLOBALS['pages'] = [
         'header' => true,        
         'menu' => true,
     ],
+    'comp-written' => [
+        'title' => 'Сохранение изменений',
+        'header' => true,
+        'menu' => true,
+    ],
     'journal' => [
         'title' => 'Страница удалена',
         'short_cut' => 'de'
