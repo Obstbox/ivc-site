@@ -1,30 +1,30 @@
 <?php
 include_once DB_PARAMS_FILE;
 if (array_key_exists("submit", $_POST)) {
-  update_sql_row($db_params, $id);
-  echo "<p style='color:magenta;'>обновлено</p>";
+  $result = update_sql_row($db_params, $id);  
 }
-$computer_row = get_sql_row($db_params, $id);
+if ($result) {
+  $computer_row = get_sql_row($db_params, $id);
 
-$rules = [  
-  'serial_num' => 'Серийный №',
-  'inventory_num' => 'Инвентарный №',
-  'name' => 'Сетевое имя',
-  'location' => 'Расположение',
-  'mother_board' => 'Материнская плата',
-  'ram_type' => 'тип ОЗУ',
-  'ram_size' => 'размер ОЗУ, Мб',
-  'cpu_name' => 'Модель процессора',
-  'cpu_freq' => 'Частота процессора, МГц',
-  'storage_name' => 'Жесткий диск (SSD)',
-  'storage_size' => 'Размер ЖД (SSD), Гб',
-  'video_card' => 'Видео карта',
-  'display' => 'Монитор',
-  'cd_drive' => 'cd/dvd',
-  'install_date' => 'Дата установки',
-  'notes' => 'Примечание'
-];
-
+  $rules = [  
+    'serial_num' => 'Серийный №',
+    'inventory_num' => 'Инвентарный №',
+    'name' => 'Сетевое имя',
+    'location' => 'Расположение',
+    'mother_board' => 'Материнская плата',
+    'ram_type' => 'тип ОЗУ',
+    'ram_size' => 'размер ОЗУ, Мб',
+    'cpu_name' => 'Модель процессора',
+    'cpu_freq' => 'Частота процессора, МГц',
+    'storage_name' => 'Жесткий диск (SSD)',
+    'storage_size' => 'Размер ЖД (SSD), Гб',
+    'video_card' => 'Видео карта',
+    'display' => 'Монитор',
+    'cd_drive' => 'cd/dvd',
+    'install_date' => 'Дата установки',
+    'notes' => 'Примечание'
+  ];
+}
 ?>
 
 <div class="row" style="margin-top:50px;">
