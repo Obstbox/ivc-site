@@ -1,6 +1,7 @@
 <?php
 include_once DB_PARAMS_FILE;
 $computer_row = get_sql_row($db_params, $id);
+complete_for_view($computer_row);
 
 $rules = [
   'id' => 'id',
