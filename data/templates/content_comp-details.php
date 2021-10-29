@@ -19,6 +19,7 @@ $rules = [
   'display' => 'Монитор',
   'cd_drive' => 'cd/dvd',
   'install_date' => 'Дата установки',
+  'notes' => 'Примечание'
 ];
 
 ?>
@@ -33,26 +34,6 @@ $rules = [
     </tr>
     <?php endforeach; ?>    
   </table>
-
-
-  <?php /*
-  <table class="u-cf">
-    <thead>
-      <tr>
-        <?php foreach ($rules as $values): ?>
-        <th><?php echo $values; ?></th>
-        <?php endforeach; ?>
-      </tr>
-    </thead>     
-    <tbody>
-      <tr>
-        <?php foreach (array_keys($rules) as $key): ?>
-        <td><?php echo $computer_row[$key]; ?></td>
-        <?php endforeach; ?>
-      </tr>
-    </tbody>
-  </table>
-  */ ?>
   
   <a class="button button-primary u-pull-right">Добавить</a>
   

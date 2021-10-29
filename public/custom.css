@@ -48,3 +48,7 @@ table.details tr td:last-child {
   width: 75%;
   min-width: 450px;
 }
+
+::placeholder {
+  color: #ccd;
+}
