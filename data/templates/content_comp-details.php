@@ -1,10 +1,10 @@
 <?php
 include_once DB_PARAMS_FILE;
-$computer_row = get_sql_row($db_params, $id);
-complete_for_view($computer_row);
 
-$rules = [
-  'id' => 'id',
+
+$computer_row = get_sql_row($db_params, $id);
+
+$rules = [  
   'serial_num' => 'Серийный №',
   'inventory_num' => 'Инвентарный №',
   'name' => 'Сетевое имя',
@@ -27,11 +27,29 @@ $rules = [
 
 <div class="row" style="margin-top:50px;">
   <p>подробные параметы компьютера <strong><?php echo $computer_row['name'];?></strong> </p>
+  
+  <?php
+  if (!empty($_POST)) {
+    echo "<p style='color:magenta;'>обновлено</p>";
+  } 
+  ?>
+  
   <table class="details u-full-width">
     <?php foreach ($rules as $col_sqlname => $col_label): ?>
     <tr>
       <td><?php echo $col_label; ?></td>
-      <td><?php echo $computer_row[$col_sqlname]; ?></td>
+      <td>
+        <?php 
+        if ($col_sqlname == 'video_card' && (empty($computer_row[$col_sqlname]))) {
+          echo "Встроенная";
+        } else if ($col_sqlname == 'cd_drive' && (empty($computer_row[$col_sqlname]))) {
+          echo "Отсутствует";
+        } else {
+          echo $computer_row[$col_sqlname];
+        }
+
+        ?>
+      </td>
     </tr>
     <?php endforeach; ?>    
   </table>

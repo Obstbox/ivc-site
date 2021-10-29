@@ -11,4 +11,7 @@ $index = $_GET['page'] ?? key($GLOBALS['pages']);
 
 $id = $_GET['id'] ?? null;
 
+// echo '<pre>';
+// var_dump($_POST);
+// echo '</pre>';
 echo render_page($index, $id);

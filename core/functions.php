@@ -174,6 +174,9 @@ function get_content(string $page, ?int $id)
     }    
 }
 
+/*
+// подмена будет зафиксирована в БД при сохранении => бессмысленно
+
 function complete_for_view(array &$sql_result) {
     if (empty($sql_result['video_card'])) {
         $sql_result['video_card'] = 'Встроенная';
@@ -182,3 +185,4 @@ function complete_for_view(array &$sql_result) {
         $sql_result['cd_drive'] = 'Отсутствует';
     }
 }
+*/

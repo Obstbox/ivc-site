@@ -1,14 +1,15 @@
 <?php
 include_once DB_PARAMS_FILE;
 $computer_row = get_sql_row($db_params, $id);
-complete_for_view($computer_row);
 
 ?>
 
 <div class="row" style="margin-top:50px;">
   <div class="row">
     
-    <form action="index.php" method="post">
+    <form action="index.php?page=comp-details&id=<?php echo $computer_row['id'];?>" method="post">
+      <?php /* <input type="hidden" name="id" value="<?php echo $computer_row['id'];?>" /> ?> */ ?>
+
       <div class="row">            
         <div class="two columns">
           <label for="name">Сетевое имя *</label>
@@ -26,7 +27,7 @@ complete_for_view($computer_row);
             id="serial_num" name="serial_num" value="<?php echo $computer_row['serial_num'];?>">
         </div>        
         <div class="five columns">
-          <label for="location">Должность оператора (или место установки) *</label>
+          <label for="location">Место установки *</label>
           <input class="u-full-width" type="text" placeholder="начальник 1й автоколонны" 
             id="location" name="location" value="<?php echo $computer_row['location'];?>">              
         </div>      
@@ -35,7 +36,7 @@ complete_for_view($computer_row);
       <div class="row">            
         <div class="six columns">
           <label for="video_card">Видео карта</label>
-          <input class="u-full-width" type="text" placeholder="NVIDIA Riva TNT2 PRO" 
+          <input class="u-full-width" type="text" placeholder="Встроенная" 
             id="video_card" name="video_card" value="<?php echo $computer_row['video_card'];?>">
         </div>            
         <div class="six columns">
@@ -84,7 +85,7 @@ complete_for_view($computer_row);
         </div>
         <div class="four columns">
           <label for="cd_drive">CD/DVD-дисковод</label>
-          <input class="u-full-width" type="text" placeholder="Optiarc DVD RW AD-7190A" 
+          <input class="u-full-width" type="text" placeholder="Отсутствует" 
             id="cd_drive" name="cd_drive" value="<?php echo $computer_row['cd_drive'];?>">              
         </div>
       </div>
