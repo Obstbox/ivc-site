@@ -40,14 +40,13 @@ $rules = [
       <td><?php echo $col_label; ?></td>
       <td>
         <?php 
-        if ($col_sqlname == 'video_card' && (empty($computer_row[$col_sqlname]))) {
+        if ( $col_sqlname == 'video_card' && (empty($computer_row[$col_sqlname])) ) {
           echo "Встроенная";
-        } else if ($col_sqlname == 'cd_drive' && (empty($computer_row[$col_sqlname]))) {
+        } else if ( $col_sqlname == 'cd_drive' && (empty($computer_row[$col_sqlname])) ) {
           echo "Отсутствует";
         } else {
           echo $computer_row[$col_sqlname];
         }
-
         ?>
       </td>
     </tr>
