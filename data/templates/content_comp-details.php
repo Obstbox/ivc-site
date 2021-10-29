@@ -1,7 +1,9 @@
 <?php
 include_once DB_PARAMS_FILE;
-
-
+if (array_key_exists("submit", $_POST)) {
+  update_sql_row($db_params, $id);
+  echo "<p style='color:magenta;'>обновлено</p>";
+}
 $computer_row = get_sql_row($db_params, $id);
 
 $rules = [  
@@ -27,12 +29,6 @@ $rules = [
 
 <div class="row" style="margin-top:50px;">
   <p>подробные параметы компьютера <strong><?php echo $computer_row['name'];?></strong> </p>
-  
-  <?php
-  if (!empty($_POST)) {
-    echo "<p style='color:magenta;'>обновлено</p>";
-  } 
-  ?>
   
   <table class="details u-full-width">
     <?php foreach ($rules as $col_sqlname => $col_label): ?>

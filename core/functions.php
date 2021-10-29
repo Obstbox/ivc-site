@@ -37,7 +37,62 @@ function get_sql_row(array $db_params, string $id)
 
 function update_sql_row(array $db_params, string $id)
 {
-    
+    extract($db_params);
+    try {
+        $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $data = [
+            'id' => $id,
+            'serial_num' => $_POST['serial_num'],
+            'inventory_num' => $_POST['inventory_num'],
+            'name' => $_POST['name'],
+            'location' => $_POST['location'],
+            'mother_board' => $_POST['mother_board'],
+            'ram_type' => $_POST['ram_type'],
+            'ram_size' => $_POST['ram_size'],
+            'cpu_name' => $_POST['cpu_name'],
+            'cpu_freq' => $_POST['cpu_freq'],
+            'storage_name' =>$_POST['storage_name'],
+            'storage_name' =>$_POST['storage_size'],
+            'video_card' => $_POST['video_card'],
+            'display' => $_POST['display'],
+            'cd_drive' => $_POST['cd_drive'],
+            'install_date' => $_POST['install_date'],
+            'notes' => $_POST['notes']
+        ];
+
+        // $statement = "UPDATE computers SET serial_num=:serial_num, inventory_num=:inventory_num WHERE id=:id";
+                
+        $statement = "UPDATE computers SET serial_num=:serial_num, inventory_num=:inventory_num, name=:name,
+            location=:location, mother_board=:mother_board, ram_type=:ram_type, ram_size=:ram_size, cpu_name=:cpu_name,
+            cpu_freq=:cpu_freq, storage_name=:storage_name, storage_name=:storage_name, video_card=:video_card, 
+            display=:display, cd_drive=:cd_drive, install_date=:install_date, notes=:notes WHERE id=:id";
+        
+        $statement = $connect->prepare($statement);
+        $statement->execute($data);
+
+        /*
+        $statement->bindParam(':serial_num', $_POST['serial_num']);
+        $statement->bindParam(':inventory_num', $_POST['inventory_num']);
+        $statement->bindParam(':name', $_POST['name']);
+        $statement->bindParam(':location', $_POST['location']);
+        $statement->bindParam(':mother_board', $_POST['mother_board']);
+        $statement->bindParam(':ram_type', $_POST['ram_type']);
+        $statement->bindParam(':ram_size', $_POST['ram_size']);
+        $statement->bindParam(':cpu_name', $_POST['cpu_name']);
+        $statement->bindParam(':cpu_freq', $_POST['cpu_freq']);
+        $statement->bindParam(':storage_name', $_POST['storage_name']);
+        $statement->bindParam(':storage_size', $_POST['storage_size']);
+        $statement->execute();
+        $statement->setFetchMode(PDO::FETCH_BOTH);
+        $result = $statement->fetch();
+        return $result;
+        */
+
+        echo $statement->rowCount() . " records updated succesfully"; 
+    } catch(PDOException $e) {
+        return ['Error: ' => $e->getMessage()];
+    }
 }
 
 function render_page(string $index, ?int $id)

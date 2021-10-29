@@ -107,7 +107,7 @@ $computer_row = get_sql_row($db_params, $id);
             id="notes" name="notes" value="<?php echo $computer_row['notes'];?>">
         </div>        
       </div>    
-      <input class="button-primary u-pull-right" type="submit" value="Подтвердить">
+      <input class="button-primary u-pull-right" type="submit" name="submit" value="Подтвердить">
     </form> 
     
     <?php /*
