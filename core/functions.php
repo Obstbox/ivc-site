@@ -68,10 +68,9 @@ function update_sql_row(array $db_params, string $id)
         
         $statement = $connect->prepare($statement);
         $statement->execute($data);
-        return $statement->rowCount(); 
-    } catch(PDOException $e) {        
-        return $e->getMessage();
-        
+        // return $statement->rowCount(); 
+    } catch(PDOException $e) {
+        return $e->getMessage();         
     }
 }
 

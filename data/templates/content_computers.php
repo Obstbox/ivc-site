@@ -49,6 +49,8 @@ $computers_data = get_sql_table($db_params);
     <?php endforeach; ?>            
   </table>
   
-  <a class="button button-primary u-pull-right">Добавить</a>
+  <div class="row">    
+    <a class="button button-primary u-pull-right" href="index.php">Добавить</a>
+  </div>  
   
 </div>

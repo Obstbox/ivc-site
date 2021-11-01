@@ -107,15 +107,12 @@ $computer_row = get_sql_row($db_params, $id);
             id="notes" name="notes" value="<?php echo $computer_row['notes'];?>">
         </div>        
       </div>    
-      <input class="button-primary u-pull-right" type="submit" name="submit" value="Подтвердить">
+      <div class="row">
+        <input class="button-primary u-pull-right" type="submit" name="submit" value="Сохранить">
+        <input class="button u-pull-right" type="button" value="Назад">
+      </div>
+      
     </form> 
-    
-    <?php /*
-    <form action="fuck.php" method="post">
-      Name: <input type="text" name="name"><br>
-      E-mail: <input type="date" name="email"><br>
-      <input type="submit">
-    </form> 
-    */ ?>
+
   </div>
 </div>

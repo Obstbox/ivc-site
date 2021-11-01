@@ -7,8 +7,8 @@ a.menu-item {
   padding: 5px;
 }
 
-/* breaks buttons */
-a:hover {
+a:hover:not(.button),
+a:hover:not(.button-primary) {
   color: whitesmoke;
   border-radius: 5px;
   background: #1EAEDB;
@@ -51,4 +51,22 @@ table.details tr td:last-child {
 
 ::placeholder {
   color: #ccd;
+}
+
+/* body {
+  font-size: 1.8em;
+} */
+
+.notify {
+  background-color: limegreen;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.button, .button-primary {
+  min-width: 130px;
+  margin-right: 5px;
 }
