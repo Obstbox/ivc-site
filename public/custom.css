@@ -70,3 +70,11 @@ table.details tr td:last-child {
   min-width: 130px;
   margin-right: 5px;
 }
+
+.required {
+  color: CornflowerBlue;
+}
+
+label.required::after {
+  content: " *";
+}

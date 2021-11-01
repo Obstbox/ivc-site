@@ -16,7 +16,12 @@ $GLOBALS['pages'] = [
         'menu' => true,
     ],
     'comp-edit' => [
-        'title' => 'Подробности',
+        'title' => 'Изменение данных',
+        'header' => true,        
+        'menu' => true,
+    ],
+    'comp-new' => [
+        'title' => 'Новая запись',
         'header' => true,        
         'menu' => true,
     ],

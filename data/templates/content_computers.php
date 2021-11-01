@@ -50,7 +50,7 @@ $computers_data = get_sql_table($db_params);
   </table>
   
   <div class="row">    
-    <a class="button button-primary u-pull-right" href="index.php">Добавить</a>
+    <a class="button button-primary u-pull-right" href="index.php?page=comp-new">Добавить</a>
   </div>  
   
 </div>
