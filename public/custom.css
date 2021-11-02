@@ -15,6 +15,30 @@ a:hover:not(.button-primary) {
   padding: 5px;
 }
 
+input[type="date"] {  
+  color: #555;
+  text-align: right;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;  
+  cursor: pointer;
+  height: 38px;
+  padding: 6px 10px; 
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="date"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+input[type="date"]:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+
 td {
   /* padding: 0px 15px; */
   text-align: left;
@@ -75,39 +99,7 @@ table.details tr td:last-child {
   color: CornflowerBlue;
 } */
 
-label.required::after {
-  content: " (*)";
+label.required::before {
+  content: "* ";
   font-weight:lighter;
 }
-
-
-input[type="date"] {  
-  color: #555;
-  text-align: right;
-  line-height: 38px;
-  letter-spacing: .1rem;
-  text-transform: uppercase;
-  text-decoration: none;  
-  cursor: pointer;
-  background-color: #33C3F0;
-  border-color: #33C3F0;
-}
-/* input[type="date"] {   */
-   /* } */
-
-input[type="date"] {
-  height: 38px;
-  padding: 6px 10px; 
-  background-color: #fff;
-  border: 1px solid #D1D1D1;
-  border-radius: 4px;
-  box-shadow: none;
-  box-sizing: border-box; }
-/* Removes awkward default styles on some inputs for iOS */
-input[type="date"] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none; }
-input[type="date"]:focus {
-  border: 1px solid #33C3F0;
-  outline: 0; }

@@ -7,6 +7,7 @@ $required_fields = [
   'cpu_freq'
 ];
 
+/*
 function check(string $key) {
   if (isset($_POST[$key])) {
     echo '<span style="display:none">(!)</span>';
@@ -14,6 +15,7 @@ function check(string $key) {
     echo '<span style="display:block">(!)</span>';
   }
 }
+*/
 
 ?>
 
@@ -23,7 +25,7 @@ function check(string $key) {
     <form action="index.php?page=comp-details&id=<?php echo $computer_row['id'];?>" method="post">
       <div class="row">            
         <div class="four columns">
-          <label for="name" class="required">Сетевое имя</label>
+          <label for="name" class="required">Сетевое имя<span class="error"></span></label>
           <input class="u-full-width" type="text" placeholder="apk-akn1" 
             id="name" name="name">
         </div> 
