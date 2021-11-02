@@ -8,7 +8,6 @@ $computer_row = get_sql_row($db_params, $id);
   <div class="row">
     
     <form action="index.php?page=comp-details&id=<?php echo $computer_row['id'];?>" method="post">
-      <?php /* <input type="hidden" name="id" value="<?php echo $computer_row['id'];?>" /> ?> */ ?>
 
       <div class="row">            
         <div class="three columns">

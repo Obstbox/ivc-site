@@ -1,31 +1,45 @@
 <?php
 include_once DB_PARAMS_FILE;
-$required_fields = [
-  'name', 
-  'location',
-  'cpu_name', 
-  'cpu_freq'
-];
 
-/*
-function check(string $key) {
-  if (isset($_POST[$key])) {
-    echo '<span style="display:none">(!)</span>';
-  } else {
-    echo '<span style="display:block">(!)</span>';
+$warnings = [];
+
+if (array_key_exists("submit", $_POST)) {
+  echo '<pre>';
+  var_dump($_POST);
+  echo '</pre>';
+
+  
+  $required_fields = [
+    'name' => 'имя обязательно', 
+    'location' => 'место обязательно',
+    'cpu_name' => 'процессор обязателен', 
+    'cpu_freq' => 'частота обязательна',
+    'install_date' => 'дата обязательна',
+    'ram_type' => 'ОЗУ обязательно',
+    'ram_size' => 'объём обязателен',
+    'storage_name' => 'ЖД обязателен',
+    'storage_size' => 'объём обязателен',
+    'mother_board' => 'плата обязательна',  
+  ];
+
+  foreach ($required_fields as $key => $value) {
+    if ( (array_key_exists($key, $_POST)) && (empty($_POST[$key])) ) {
+      echo "{$key} + {$value}<br>";
+    }
   }
+  exit;
 }
-*/
+
 
 ?>
 
 <div class="row" style="margin-top:50px;">
   <div class="row">
     
-    <form action="index.php?page=comp-details&id=<?php echo $computer_row['id'];?>" method="post">
+    <form action="index.php?page=comp-new" method="post">
       <div class="row">            
         <div class="four columns">
-          <label for="name" class="required">Сетевое имя<span class="error"></span></label>
+          <label for="name" class="required">Сетевое имя <span class="error"><?php echo $warnings['name'];?></span></label>
           <input class="u-full-width" type="text" placeholder="apk-akn1" 
             id="name" name="name">
         </div> 
@@ -123,7 +137,7 @@ function check(string $key) {
         </div>        
       </div>    
       <div class="row" style="margin-top: 5%;">
-        <span class="required u-pull-left"><strong>Поля со звёздочкой (*) - обязательные</strong></span>
+        <span class="u-pull-left"><strong>Поля со звёздочкой (*) - обязательные</strong></span>
         <input class="button-primary u-pull-right" type="submit" name="submit" value="Сохранить">
         <input class="button u-pull-right" type="button" value="Назад">
       </div>

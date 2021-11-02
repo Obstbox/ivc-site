@@ -103,3 +103,10 @@ label.required::before {
   content: "* ";
   font-weight:lighter;
 }
+
+span.error {
+  color:tomato;
+  font-size: 0.85em;
+  /* text-transform: lowercase; */
+  font-style: italic;
+}
