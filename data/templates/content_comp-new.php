@@ -22,26 +22,33 @@ function check(string $key) {
     
     <form action="index.php?page=comp-details&id=<?php echo $computer_row['id'];?>" method="post">
       <div class="row">            
-        <div class="two columns">
-          <label for="name" class="required">Сетевое имя<?php check('name');?></label>
+        <div class="four columns">
+          <label for="name" class="required">Сетевое имя</label>
           <input class="u-full-width" type="text" placeholder="apk-akn1" 
             id="name" name="name">
-        </div>            
-        <div class="two columns">
+        </div> 
+        <div class="eight columns">
+          <label for="location" class="required">Место установки</label>
+          <input class="u-full-width" type="text" placeholder="начальник 1й автоколонны" 
+            id="location" name="location">              
+        </div>                   
+      </div>
+      <div class="row">
+        <div class="four columns">
           <label for="inventory_num">Инвентарный №</label>
           <input class="u-full-width" type="text" placeholder="12345" 
             id="inventory_num" name="inventory_num">
         </div>
-        <div class="three columns">
+        <div class="four columns">
           <label for="serial_num">Серийный №</label>
           <input class="u-full-width" type="text" placeholder="230AF4900BC00A" 
             id="serial_num" name="serial_num">
-        </div>        
-        <div class="five columns">
-          <label for="location" class="required">Место установки</label>
-          <input class="u-full-width" type="text" placeholder="начальник 1й автоколонны" 
-            id="location" name="location">              
-        </div>      
+        </div>
+        <div class="four columns">
+          <label for="install_date" class="required">Установлен</label>
+          <input class="u-full-width" type="date" placeholder="" 
+            id="install_date" name="install_date">              
+        </div> 
       </div>
 
       <div class="row">            
@@ -102,17 +109,12 @@ function check(string $key) {
       </div>
 
       <div class="row">            
-        <div class="four columns">
+        <div class="five columns">
           <label for="mother_board" class="required">Материнская плата</label>
           <input class="u-full-width" type="text" placeholder="Foxconn 45GM" 
             id="mother_board" name="mother_board">
-        </div>      
-        <div class="two columns">
-          <label for="install_date" class="required">Установлен</label>
-          <input class="u-full-width" type="date" placeholder="" 
-            id="install_date" name="install_date">              
-        </div>      
-        <div class="six columns">
+        </div>
+        <div class="seven columns">
           <label for="notes">Примечание</label>
           <input class="u-full-width" type="text" placeholder="Однажды, в студеную зимнюю пору я из лесу вышел..." 
             id="notes" name="notes">
