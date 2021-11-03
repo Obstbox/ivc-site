@@ -7,8 +7,7 @@ a.menu-item {
   padding: 5px;
 }
 
-a:hover:not(.button),
-a:hover:not(.button-primary) {
+a:hover:not(.button) {
   color: whitesmoke;
   border-radius: 5px;
   background: #1EAEDB;
@@ -77,10 +76,6 @@ table.details tr td:last-child {
   color: #ccd;
 }
 
-/* body {
-  font-size: 1.8em;
-} */
-
 .notify {
   background-color: limegreen;
   color: white;
@@ -95,13 +90,8 @@ table.details tr td:last-child {
   margin-right: 5px;
 }
 
-/* .required {
-  color: CornflowerBlue;
-} */
-
 label.required::before {
   content: "* ";
-  font-weight:lighter;
 }
 
 span.error {

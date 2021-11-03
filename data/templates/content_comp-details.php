@@ -55,9 +55,9 @@ $rules = [
     <?php endforeach; ?>    
   </table>
   
-  <div class="row">
-    <input class="button-primary u-pull-right" type="button" value="Изменить">
-    <input class="button u-pull-right" type="button" value="Назад">
+  <div class="row">    
+    <a class="button button-primary u-pull-right" href='index.php?page=comp-edit&id=<?php echo $computer_row['id'];?>'>Изменить</a>
+    <a class="button u-pull-right" href="index.php?page=computers">Назад</a>        
   </div> 
   
 </div>
