@@ -2,19 +2,7 @@
 include_once DB_PARAMS_FILE;
 
 
-$required_fields = [
-  'name' => 'имя обязательно', 
-  'location' => 'место обязательно',
-  'cpu_name' => 'процессор обязателен', 
-  'cpu_freq' => 'частота обязательна',
-  'install_date' => 'дата обязательна',
-  'ram_type' => 'ОЗУ обязательно',
-  'ram_size' => 'объём обязателен',
-  'storage_name' => 'ЖД обязателен',
-  'storage_size' => 'объём обязателен',
-  'mother_board' => 'плата обязательна',  
-];
-
+$required_fields = get_required_fields('computers');
 
 if (array_key_exists("submit", $_POST)) {
   foreach ($required_fields as $key => $value) {

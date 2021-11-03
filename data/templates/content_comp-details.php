@@ -2,12 +2,10 @@
 include_once DB_PARAMS_FILE;
 $computer_row = get_sql_row($db_params, $id);  
 
-$display_html_elem = 'none';
-
-if (array_key_exists("submit", $_POST)) {
-  update_sql_row($db_params, $id);  
-  $computer_row = get_sql_row($db_params, $id);
-  $display_html_elem = true;
+if ($_GET['written'] == true) {
+  $display_html_elem = 'true';
+} else {
+  $display_html_elem = 'none';
 }
 
 $rules = [  
@@ -33,7 +31,7 @@ $rules = [
 
 <div class="row" style="margin-top:50px;">
   <p>подробные параметы компьютера <strong><?php echo $computer_row['name'];?></strong> 
-    <span class="notify" style="display:<?php echo $display_html_elem;?>">УСПЕШНО ОБНОВЛЕНЫ</span> 
+    <span class="notify" style="display:<?php echo $display_html_elem;?>">успешно записаны</span> 
   </p>
   
   <table class="details u-full-width">

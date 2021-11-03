@@ -77,11 +77,11 @@ table.details tr td:last-child {
 }
 
 .notify {
-  background-color: limegreen;
+  background-color: rgb(124, 206, 124);
   color: white;
   border-radius: 5px;
   padding: 5px 15px;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-style: italic;
 }
 

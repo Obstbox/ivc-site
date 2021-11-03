@@ -93,6 +93,28 @@ function new_sql_record(array $db_params, $data): int
     }
 }
 
+function get_required_fields(string $view): array 
+{
+    switch($view) {
+        case 'computers':
+            return [
+                'name' => 'имя обязательно', 
+                'location' => 'место обязательно',
+                'cpu_name' => 'процессор обязателен', 
+                'cpu_freq' => 'частота обязательна',
+                'install_date' => 'дата обязательна',
+                'ram_type' => 'ОЗУ обязательно',
+                'ram_size' => 'объём обязателен',
+                'storage_name' => 'ЖД обязателен',
+                'storage_size' => 'объём обязателен',
+                'mother_board' => 'плата обязательна',  
+            ];
+            break;
+        default:
+            die('ошибка запроса требуемых полей формы!<br>');
+    }
+}
+
 function render_page(string $index, ?int $id)
 {
     $page_file = TEMPLATES_DIR . 'base.php';
