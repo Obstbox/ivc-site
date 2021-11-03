@@ -25,15 +25,16 @@ if (array_key_exists("submit", $_POST)) {
     }
   }
 
-  // убрать пустые строки и 'submit' в том числе
-  $_POST = array_filter($_POST);
+  // убрать пустые строки и 'submit' в том числе  
+  $custom_post = array_filter($_POST);
+  unset($custom_post['submit']);
 
   // если все необходимые поля были заполнены
-  if (empty(array_diff_key($required_fields, $_POST)))
+  if (empty(array_diff_key($required_fields, $custom_post)))
   {
-    // echo "Все поля заполнены";
-    // exit;
-    header("Location: index.php");
+    $inserted_id = new_sql_record($db_params, $custom_post);
+    $uri = "index.php?page=comp-details&id={$inserted_id}";    
+    header("Location: {$uri}");
   }
 }
 
@@ -48,12 +49,12 @@ if (array_key_exists("submit", $_POST)) {
         <div class="four columns">
           <label for="name" class="required">Сетевое имя <span class="error"><?php echo $warnings['name'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="apk-akn1" 
-            id="name" name="name" value="<?php echo $_POST['name'] ?? '';?>">
+            id="name" name="name" value="<?php echo $_POST['name'] ?? 'apk-gi';?>">
         </div> 
         <div class="eight columns">
           <label for="location" class="required">Место установки <span class="error"><?php echo $warnings['location'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="начальник 1й автоколонны" 
-            id="location" name="location" value="<?php echo $_POST['location'] ?? '';?>">              
+            id="location" name="location" value="<?php echo $_POST['location'] ?? 'ССТ';?>">              
         </div>                   
       </div>
       <div class="row">
@@ -91,12 +92,12 @@ if (array_key_exists("submit", $_POST)) {
         <div class="six columns">
           <label for="cpu_name" class="required">Модель процессора <span class="error"><?php echo $warnings['cpu_name'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="Intel Core i3-4170" 
-            id="cpu_name" name="cpu_name" value="<?php echo $_POST['cpu_name'] ?? '';?>">
+            id="cpu_name" name="cpu_name" value="<?php echo $_POST['cpu_name'] ?? 'core i3';?>">
         </div>            
         <div class="six columns">
           <label for="cpu_freq" class="required">Частота процессора, МГц <span class="error"><?php echo $warnings['cpu_freq'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="3700" 
-            id="cpu_freq" name="cpu_freq" value="<?php echo $_POST['cpu_freq'] ?? '';?>">              
+            id="cpu_freq" name="cpu_freq" value="<?php echo $_POST['cpu_freq'] ?? '1800';?>">              
         </div>
       </div>
 
@@ -104,12 +105,12 @@ if (array_key_exists("submit", $_POST)) {
         <div class="six columns">
           <label for="ram_type" class="required">Тип ОЗУ <span class="error"><?php echo $warnings['ram_type'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="DDR-2" 
-            id="ram_type" name="ram_type" value="<?php echo $_POST['ram_type'] ?? '';?>">
+            id="ram_type" name="ram_type" value="<?php echo $_POST['ram_type'] ?? 'ddr-3';?>">
         </div>            
         <div class="six columns">
           <label for="ram_size" class="required">Объём ОЗУ, Мб <span class="error"><?php echo $warnings['ram_size'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="2048" 
-            id="ram_size" name="ram_size" value="<?php echo $_POST['ram_size'] ?? '';?>">              
+            id="ram_size" name="ram_size" value="<?php echo $_POST['ram_size'] ?? '2048';?>">              
         </div>
       </div>
 
@@ -117,12 +118,12 @@ if (array_key_exists("submit", $_POST)) {
         <div class="four columns">
           <label for="storage_name" class="required">Модель жёсткого диска/SSD <span class="error"><?php echo $warnings['storage_name'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="Seagate" 
-            id="storage_name" name="storage_name" value="<?php echo $_POST['storage_name'] ?? '';?>">
+            id="storage_name" name="storage_name" value="<?php echo $_POST['storage_name'] ?? 'wd';?>">
         </div>            
         <div class="four columns">
           <label for="storage_size" class="required">Объём жёсткого диска/SSD, Гб <span class="error"><?php echo $warnings['storage_size'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="320" 
-            id="storage_size" name="storage_size" value="<?php echo $_POST['storage_size'] ?? '';?>">
+            id="storage_size" name="storage_size" value="<?php echo $_POST['storage_size'] ?? '320';?>">
         </div>
         <div class="four columns">
           <label for="cd_drive">CD/DVD-дисковод</label>
@@ -135,7 +136,7 @@ if (array_key_exists("submit", $_POST)) {
         <div class="five columns">
           <label for="mother_board" class="required">Материнская плата <span class="error"><?php echo $warnings['mother_board'] ?? '';?></span></label>
           <input class="u-full-width" type="text" placeholder="Foxconn 45GM" 
-            id="mother_board" name="mother_board" value="<?php echo $_POST['mother_board'] ?? '';?>">
+            id="mother_board" name="mother_board" value="<?php echo $_POST['mother_board'] ?? 'msi';?>">
         </div>
         <div class="seven columns">
           <label for="notes">Примечание</label>

@@ -74,6 +74,25 @@ function update_sql_row(array $db_params, string $id)
     }
 }
 
+function new_sql_record(array $db_params, $data): int
+{
+    extract($db_params);
+
+    $values_str = implode(", ", array_map(fn($d) => "'$d'", $data));
+    $keys_str = implode(", ", array_keys($data));
+    
+    try {
+        $connect = new PDO("mysql:host=$server_name;dbname=$table_name;charset=utf8", $db_user_name, $db_password);
+        $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $statement = "INSERT INTO computers ({$keys_str}) VALUES ({$values_str})";
+        $connect->exec($statement);
+        $lasd_id = $connect->lastInsertId();
+        return $lasd_id;
+    } catch(PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
 function render_page(string $index, ?int $id)
 {
     $page_file = TEMPLATES_DIR . 'base.php';
