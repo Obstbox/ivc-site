@@ -28,7 +28,7 @@ include_once DB_PARAMS_FILE;
       </div>
       <div class="four columns">
         <label for="serial_num">Серийный №</label>
-        <input class="u-full-width" type="text" pattern="[a-zA-Z0-9\-\s]+$" title="цифры, латинские буквы, пробелы и тире" 
+        <input class="u-full-width" type="text" pattern="[a-zA-Z0-9\-\s]+$" title="допустимы цифры, латинские буквы, пробелы и тире" 
           placeholder="230AF4900BC00A" id="serial_num" name="serial_num" value="">
       </div>
       <div class="four columns">
