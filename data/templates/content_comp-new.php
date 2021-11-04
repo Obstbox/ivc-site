@@ -23,11 +23,13 @@ include_once DB_PARAMS_FILE;
     <div class="row">
       <div class="four columns">
         <label for="inventory_num">Инвентарный №</label>
-        <input class="u-full-width" type="text" placeholder="12345" id="inventory_num" name="inventory_num" value="">
+        <input class="u-full-width" type="text" pattern="[0-9]{5}" title="пятизначное число" placeholder="17123" 
+          id="inventory_num" name="inventory_num" value="">
       </div>
       <div class="four columns">
         <label for="serial_num">Серийный №</label>
-        <input class="u-full-width" type="text" placeholder="230AF4900BC00A" id="serial_num" name="serial_num" value="">
+        <input class="u-full-width" type="text" pattern="[a-zA-Z0-9\-\s]+$" title="цифры, латинские буквы, пробелы и тире" 
+          placeholder="230AF4900BC00A" id="serial_num" name="serial_num" value="">
       </div>
       <div class="four columns">
         <label for="install_date" class="required">Установлен</label>
@@ -53,7 +55,8 @@ include_once DB_PARAMS_FILE;
       </div>            
       <div class="six columns">
         <label for="cpu_freq" class="required">Частота процессора, МГц</label>
-        <input class="u-full-width" type="text" placeholder="3700" id="cpu_freq" name="cpu_freq" value="" required>              
+        <input class="u-full-width" type="text" pattern="[0-9]{4}" title="четырехзначное число" placeholder="3300" 
+          id="cpu_freq" name="cpu_freq" value="" required>              
       </div>
     </div>
 
@@ -64,7 +67,8 @@ include_once DB_PARAMS_FILE;
       </div>            
       <div class="six columns">
         <label for="ram_size" class="required">Объём ОЗУ, Мб</label>
-        <input class="u-full-width" type="text" placeholder="2048" id="ram_size" name="ram_size" value="" required>              
+        <input class="u-full-width" type="text" pattern="[0-9]{3,5}" title="3...5-значное число" placeholder="2048" 
+          id="ram_size" name="ram_size" value="" required>              
       </div>
     </div>
 
@@ -75,7 +79,7 @@ include_once DB_PARAMS_FILE;
       </div>            
       <div class="four columns">
         <label for="storage_size" class="required">Объём жёсткого диска/SSD, Гб</label>
-        <input class="u-full-width" type="text" placeholder="320" id="storage_size" name="storage_size" value="" required>
+        <input class="u-full-width" type="text" pattern="[0-9]{2,4}" title="2...4-значное число" placeholder="320" id="storage_size" name="storage_size" value="" required>
       </div>
       <div class="four columns">
         <label for="cd_drive">CD/DVD-дисковод</label>
