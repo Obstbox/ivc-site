@@ -2,30 +2,6 @@
 include_once DB_PARAMS_FILE;
 
 
-$required_fields = get_required_fields('computers');
-
-if (array_key_exists("submit", $_POST)) {
-  foreach ($required_fields as $key => $value) {
-    if ( (array_key_exists($key, $_POST)) && (empty($_POST[$key])) ) {
-      $warnings[$key] = $value;
-    } else {
-      $warnings[$key] = '';
-    }
-  }
-
-  // убрать пустые строки и 'submit' в том числе  
-  $custom_post = array_filter($_POST);
-  unset($custom_post['submit']);
-
-  // если все необходимые поля были заполнены
-  if (empty(array_diff_key($required_fields, $custom_post)))
-  {
-    $inserted_id = new_sql_record($db_params, $custom_post);
-    $uri = "index.php?page=comp-details&id={$inserted_id}";    
-    header("Location: {$uri}");
-  }
-}
-
 
 ?>
 
@@ -33,104 +9,90 @@ if (array_key_exists("submit", $_POST)) {
   <h5>Новая запись</h5>
 </div>
 <div class="row">
-  <form action="index.php?page=comp-new" method="post">
+  <form action="" method="post">
     <div class="row">            
       <div class="four columns">
-        <label for="name" class="required">Сетевое имя <span class="error"><?php echo $warnings['name'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="apk-akn1" 
-          id="name" name="name" value="<?php echo $_POST['name'] ?? '';?>">
+        <label for="name" class="required">Сетевое имя</label>
+        <input class="u-full-width" type="text" placeholder="apk-akn1" id="name" name="name" value="" required>
       </div> 
       <div class="eight columns">
-        <label for="location" class="required">Место установки <span class="error"><?php echo $warnings['location'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="начальник 1й автоколонны" 
-          id="location" name="location" value="<?php echo $_POST['location'] ?? '';?>">              
+        <label for="location" class="required">Место установки</label>
+        <input class="u-full-width" type="text" placeholder="начальник 1й автоколонны" id="location" name="location" value="" required>              
       </div>                   
     </div>
     <div class="row">
       <div class="four columns">
         <label for="inventory_num">Инвентарный №</label>
-        <input class="u-full-width" type="text" placeholder="12345" 
-          id="inventory_num" name="inventory_num" value="<?php echo $_POST['inventory_num'] ?? '';?>">
+        <input class="u-full-width" type="text" placeholder="12345" id="inventory_num" name="inventory_num" value="">
       </div>
       <div class="four columns">
         <label for="serial_num">Серийный №</label>
-        <input class="u-full-width" type="text" placeholder="230AF4900BC00A" 
-          id="serial_num" name="serial_num" value="<?php echo $_POST['serial_num'] ?? '';?>">
+        <input class="u-full-width" type="text" placeholder="230AF4900BC00A" id="serial_num" name="serial_num" value="">
       </div>
       <div class="four columns">
-        <label for="install_date" class="required">Установлен <span class="error"><?php echo $warnings['install_date'] ?? '';?></span></label>
-        <input class="u-full-width" type="date" placeholder="" 
-          id="install_date" name="install_date" value="<?php echo $_POST['install_date'] ?? '';?>">              
+        <label for="install_date" class="required">Установлен</label>
+        <input class="u-full-width" type="date" placeholder="" id="install_date" name="install_date" value="" required>              
       </div> 
     </div>
 
     <div class="row">            
       <div class="six columns">
         <label for="video_card">Видео карта</label>
-        <input class="u-full-width" type="text" placeholder="Встроенная" 
-          id="video_card" name="video_card" value="<?php echo $_POST['video_card'] ?? '';?>">
+        <input class="u-full-width" type="text" placeholder="Встроенная" id="video_card" name="video_card" value="">
       </div>            
       <div class="six columns">
         <label for="display">Монитор</label>
-        <input class="u-full-width" type="text" placeholder="Benq FP93GX" 
-          id="display" name="display" value="<?php echo $_POST['display'] ?? '';?>">              
+        <input class="u-full-width" type="text" placeholder="Benq FP93GX" id="display" name="display" value="">              
       </div>
     </div>
 
     <div class="row">            
       <div class="six columns">
-        <label for="cpu_name" class="required">Модель процессора <span class="error"><?php echo $warnings['cpu_name'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="Intel Core i3-4170" 
-          id="cpu_name" name="cpu_name" value="<?php echo $_POST['cpu_name'] ?? '';?>">
+        <label for="cpu_name" class="required">Модель процессора</label>
+        <input class="u-full-width" type="text" placeholder="Intel Core i3-4170" id="cpu_name" name="cpu_name" value="" required>
       </div>            
       <div class="six columns">
-        <label for="cpu_freq" class="required">Частота процессора, МГц <span class="error"><?php echo $warnings['cpu_freq'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="3700" 
-          id="cpu_freq" name="cpu_freq" value="<?php echo $_POST['cpu_freq'] ?? '';?>">              
+        <label for="cpu_freq" class="required">Частота процессора, МГц</label>
+        <input class="u-full-width" type="text" placeholder="3700" id="cpu_freq" name="cpu_freq" value="" required>              
       </div>
     </div>
 
     <div class="row">            
       <div class="six columns">
-        <label for="ram_type" class="required">Тип ОЗУ <span class="error"><?php echo $warnings['ram_type'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="DDR-2" 
-          id="ram_type" name="ram_type" value="<?php echo $_POST['ram_type'] ?? '';?>">
+        <label for="ram_type" class="required">Тип ОЗУ</label>
+        <input class="u-full-width" type="text" placeholder="DDR-2" id="ram_type" name="ram_type" value="" required>
       </div>            
       <div class="six columns">
-        <label for="ram_size" class="required">Объём ОЗУ, Мб <span class="error"><?php echo $warnings['ram_size'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="2048" 
-          id="ram_size" name="ram_size" value="<?php echo $_POST['ram_size'] ?? '';?>">              
+        <label for="ram_size" class="required">Объём ОЗУ, Мб</label>
+        <input class="u-full-width" type="text" placeholder="2048" id="ram_size" name="ram_size" value="" required>              
       </div>
     </div>
 
     <div class="row">            
       <div class="four columns">
-        <label for="storage_name" class="required">Модель жёсткого диска/SSD <span class="error"><?php echo $warnings['storage_name'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="Seagate" 
-          id="storage_name" name="storage_name" value="<?php echo $_POST['storage_name'] ?? '';?>">
+        <label for="storage_name" class="required">Модель жёсткого диска/SSD</label>
+        <input class="u-full-width" type="text" placeholder="Seagate" id="storage_name" name="storage_name" value="" required>
       </div>            
       <div class="four columns">
-        <label for="storage_size" class="required">Объём жёсткого диска/SSD, Гб <span class="error"><?php echo $warnings['storage_size'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="320" 
-          id="storage_size" name="storage_size" value="<?php echo $_POST['storage_size'] ?? '';?>">
+        <label for="storage_size" class="required">Объём жёсткого диска/SSD, Гб</label>
+        <input class="u-full-width" type="text" placeholder="320" id="storage_size" name="storage_size" value="" required>
       </div>
       <div class="four columns">
         <label for="cd_drive">CD/DVD-дисковод</label>
         <input class="u-full-width" type="text" placeholder="Отсутствует" 
-          id="cd_drive" name="cd_drive" value="<?php echo $_POST['cd_drive'] ?? '';?>">              
+          id="cd_drive" name="cd_drive" value="">              
       </div>
     </div>
 
     <div class="row">            
       <div class="five columns">
-        <label for="mother_board" class="required">Материнская плата <span class="error"><?php echo $warnings['mother_board'] ?? '';?></span></label>
-        <input class="u-full-width" type="text" placeholder="Foxconn 45GM" 
-          id="mother_board" name="mother_board" value="<?php echo $_POST['mother_board'] ?? '';?>">
+        <label for="mother_board" class="required">Материнская плата</label>
+        <input class="u-full-width" type="text" placeholder="Foxconn 45GM" id="mother_board" name="mother_board" value="" required>
       </div>
       <div class="seven columns">
         <label for="notes">Примечание</label>
         <input class="u-full-width" type="text" placeholder="Однажды, в студеную зимнюю пору я из лесу вышел..." 
-          id="notes" name="notes" value="<?php echo $_POST['notes'] ?? '';?>">
+          id="notes" name="notes" value="">
       </div>        
     </div>    
     <div class="row" style="margin-top: 5%;">
